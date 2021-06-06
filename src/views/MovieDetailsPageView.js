@@ -11,6 +11,9 @@ import {
 } from 'react-router-dom';
 import moviesOperations from '../redux/movies/movies-operations';
 import moviesSelectors from '../redux/movies/movies-selectors';
+import Cast from '../components/Cast';
+import Review from '../components/Review';
+import MovieImages from '../components/MovieImages';
 
 export default function MovieDetailsPage() {
   const dispatch = useDispatch();
@@ -32,6 +35,9 @@ export default function MovieDetailsPage() {
   const movieId = params.movieId;
 
   console.log(location);
+  console.log(match.url);
+  console.log(match.path);
+  console.log(movieId);
 
   useEffect(() => {
     dispatch(moviesOperations.fetchMovieDetails(movieId));
@@ -39,6 +45,11 @@ export default function MovieDetailsPage() {
 
   const handleGoBack = () => {
     if (location.state && location.state.from) {
+      /* return history.push({
+        pathname: location.state.from.pathname,
+        search: location.state.from.search,
+        page: location.state.page,
+      }); */
       return history.push(location.state.from);
     }
     history.push('/');
@@ -81,40 +92,61 @@ export default function MovieDetailsPage() {
               <p>Additional information</p>
               <ul className="list">
                 <li>
-                  {/*  <NavLink
-                to={}
-                className="nav__link"
-                activeClassName="nav__link--active"
-              >
-                Cast
-              </NavLink> */}
+                  <NavLink
+                    to={{
+                      pathname: `${match.url}/cast`,
+                      state: {
+                        from: { ...location.state.from },
+                      },
+                    }}
+                    className="nav__link"
+                    activeClassName="nav__link--active"
+                  >
+                    Cast
+                  </NavLink>
                 </li>
                 <li>
-                  {/* <NavLink
-                to={}
-                className="nav__link"
-                activeClassName="nav__link--active"
-              >
-                Reviews
-              </NavLink> */}
+                  <NavLink
+                    to={{
+                      pathname: `${match.url}/review`,
+                      state: {
+                        from: { ...location.state.from },
+                      },
+                    }}
+                    className="nav__link"
+                    activeClassName="nav__link--active"
+                  >
+                    Review
+                  </NavLink>
+                </li>
+                <li>
+                  <NavLink
+                    to={{
+                      pathname: `${match.url}/images`,
+                      state: {
+                        from: { ...location.state.from },
+                      },
+                    }}
+                    className="nav__link"
+                    activeClassName="nav__link--active"
+                  >
+                    Movie Images
+                  </NavLink>
                 </li>
               </ul>
             </div>
           </div>
 
           <Switch>
-            {/*  <Route
-          path={`${match.path}/cast`}
-          render={props => (
-            <Cast {...props} movieId={Number(match.params.movieId)} />
-          )}
-        />
-        <Route
-          path={`${match.path}/review`}
-          render={props => (
-            <Review {...props} movieId={Number(match.params.movieId)} />
-          )}
-        /> */}
+            <Route path={`${match.path}/cast`} movieId={movieId}>
+              <Cast />
+            </Route>
+            <Route path={`${match.path}/review`} movieId={movieId}>
+              <Review />
+            </Route>
+            <Route path={`${match.path}/images`} movieId={movieId}>
+              <MovieImages />
+            </Route>
           </Switch>
         </div>
       )}

@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { useLocation } from 'react-router-dom';
 import ReactPaginate from 'react-paginate';
 import moviesOperations from '../redux/movies/movies-operations';
 import moviesSelectors from '../redux/movies/movies-selectors';
@@ -9,22 +10,25 @@ import './viewsStyles/MoviesView.scss';
 
 export default function MoviesView() {
   const dispatch = useDispatch();
-  const [offset, setOffset] = useState(1);
+  const location = useLocation();
+  const [page, setPage] = useState(location?.page || 1);
+
+  console.log(location);
 
   const movies = useSelector(moviesSelectors.getMovies);
   const totalPages = useSelector(moviesSelectors.getTotalResultPopularMovies);
 
-  useEffect(() => {
+  /* useEffect(() => {
     dispatch(moviesOperations.fetchTotalPopularMovies());
-  }, [dispatch]);
+  }, [dispatch]); */
 
   useEffect(() => {
     dispatch(moviesOperations.fetchPopularMovies());
   }, [dispatch]);
 
   useEffect(() => {
-    dispatch(moviesOperations.fetchPopularMovies(offset));
-  }, [dispatch, offset]);
+    dispatch(moviesOperations.fetchPopularMovies(page));
+  }, [dispatch, page]);
 
   useEffect(() => {
     dispatch(moviesActions.clearTotalResultMovies());
@@ -32,17 +36,14 @@ export default function MoviesView() {
 
   const handlePageClick = event => {
     const selectedPage = event.selected;
-    setOffset(selectedPage + 1);
+    setPage(selectedPage + 1);
   };
-
-  console.log(totalPages);
-  console.log(movies);
 
   return (
     <main>
       <section className="section">
         <div className="container">
-          <MoviesList movies={movies} />
+          <MoviesList movies={movies} page={page} />
 
           <ReactPaginate
             previousLabel={'previous'}
@@ -54,6 +55,8 @@ export default function MoviesView() {
             containerClassName={'pagination'}
             subContainerClassName={'pages pagination'}
             activeClassName={'active'}
+            pageRangeDisplayed={2}
+            marginPagesDisplayed={2}
           />
         </div>
       </section>

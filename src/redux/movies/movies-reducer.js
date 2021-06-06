@@ -27,9 +27,24 @@ const movieDetails = createReducer(
   },
 );
 
+const movieCast = createReducer([], {
+  [moviesActions.fetchMovieCastSuccess]: (_, { payload }) => payload,
+});
+
+const movieReview = createReducer([], {
+  [moviesActions.fetchMovieReviewSuccess]: (_, { payload }) => payload,
+});
+
+const movieImages = createReducer(null, {
+  [moviesActions.fetchMovieImagesSuccess]: (_, { payload }) => payload,
+});
+
 export default combineReducers({
   movies,
   totalPopularMovies,
   totalMovies,
   movieDetails,
+  movieCast,
+  movieReview,
+  movieImages,
 });

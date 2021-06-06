@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useLocation } from 'react-router-dom';
 import ReactPaginate from 'react-paginate';
+import _ from 'lodash';
 import moviesOperations from '../redux/movies/movies-operations';
 import moviesSelectors from '../redux/movies/movies-selectors';
 import moviesActions from '../redux/movies/movies-actions';
@@ -15,14 +16,22 @@ export default function MoviesView() {
   const movies = useSelector(moviesSelectors.getMovies);
   const totalPages = useSelector(moviesSelectors.getTotalResultMovies);
 
-  const [offset, setOffset] = useState(1);
+  const [page, setPage] = useState(location?.page || 1);
   const [search, setSearch] = useState(location?.search.slice(1) || '');
+
+  /* useEffect(() => {
+    if (!search) {
+      return;
+    }
+    dispatch(moviesOperations.fetchTotalMovies(search));
+  }, [dispatch]); */
 
   useEffect(() => {
     dispatch(moviesActions.clearMovies());
     if (!search) {
       return;
     }
+
     dispatch(moviesOperations.fetchMovies(search));
   }, [dispatch]);
 
@@ -30,19 +39,12 @@ export default function MoviesView() {
     if (!search) {
       return;
     }
-    dispatch(moviesOperations.fetchMovies(search, offset));
-  }, [dispatch, offset]);
-
-  useEffect(() => {
-    if (!search) {
-      return;
-    }
-    dispatch(moviesOperations.fetchTotalMovies(search));
-  }, [dispatch]);
+    dispatch(moviesOperations.fetchMovies(search, page));
+  }, [dispatch, page]);
 
   const handlePageClick = event => {
     const selectedPage = event.selected;
-    setOffset(selectedPage + 1);
+    setPage(selectedPage + 1);
   };
 
   const handleSearchChange = e => {
@@ -57,9 +59,6 @@ export default function MoviesView() {
     location.search = search;
     /* setSearch(''); */
   };
-
-  console.log(location);
-  console.log(search);
 
   return (
     <main>
@@ -79,19 +78,21 @@ export default function MoviesView() {
             </div>
           </form>
           {/* <SearchForm /> */}
-          <MoviesList movies={movies} query={search} />
+          <MoviesList movies={movies} page={page} />
 
-          <ReactPaginate
-            previousLabel={'previous'}
-            nextLabel={'next'}
-            breakLabel={'...'}
-            breakClassName={'break-me'}
-            pageCount={totalPages}
-            onPageChange={handlePageClick}
-            containerClassName={'pagination'}
-            subContainerClassName={'pages pagination'}
-            activeClassName={'active'}
-          />
+          {movies.length > 0 && (
+            <ReactPaginate
+              previousLabel={'previous'}
+              nextLabel={'next'}
+              breakLabel={'...'}
+              breakClassName={'break-me'}
+              pageCount={totalPages}
+              onPageChange={handlePageClick}
+              containerClassName={'pagination'}
+              subContainerClassName={'pages pagination'}
+              activeClassName={'active'}
+            />
+          )}
         </div>
       </section>
     </main>
