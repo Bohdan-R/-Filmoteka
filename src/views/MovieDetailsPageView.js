@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useCallback } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import {
   Route,
@@ -11,6 +11,7 @@ import {
 } from 'react-router-dom';
 import moviesOperations from '../redux/movies/movies-operations';
 import moviesSelectors from '../redux/movies/movies-selectors';
+import moviesActions from '../redux/movies/movies-actions';
 import Cast from '../components/Cast';
 import Review from '../components/Review';
 import MovieImages from '../components/MovieImages';
@@ -20,12 +21,14 @@ export default function MovieDetailsPage() {
   const {
     id,
     title,
+    overview,
+    genres,
     poster_path,
     vote_average,
     runtime,
-    overview,
-    genres,
+    release_date,
   } = useSelector(moviesSelectors.getMovieDetails);
+  const favouriteMovies = useSelector(moviesSelectors.getFavouriteMovies);
 
   const history = useHistory();
   const params = useParams();
@@ -34,10 +37,10 @@ export default function MovieDetailsPage() {
 
   const movieId = params.movieId;
 
-  console.log(location);
+  /*   console.log(location);
   console.log(match.url);
   console.log(match.path);
-  console.log(movieId);
+  console.log(movieId); */
 
   useEffect(() => {
     dispatch(moviesOperations.fetchMovieDetails(movieId));
@@ -45,13 +48,9 @@ export default function MovieDetailsPage() {
 
   const handleGoBack = () => {
     if (location.state && location.state.from) {
-      /* return history.push({
-        pathname: location.state.from.pathname,
-        search: location.state.from.search,
-        page: location.state.page,
-      }); */
       return history.push(location.state.from);
     }
+
     history.push('/');
   };
 
@@ -63,7 +62,7 @@ export default function MovieDetailsPage() {
             <button type="button" onClick={handleGoBack}>
               Go back
             </button>
-            <div className="article">
+            <div className="article" id={id}>
               <div className="article__img-wrap">
                 <img
                   src={`https://image.tmdb.org/t/p/w500/${poster_path}`}
@@ -87,6 +86,32 @@ export default function MovieDetailsPage() {
                 <p className="article__duration">Duration: {runtime} munites</p>
               </div>
             </div>
+
+            <button
+              type="button"
+              onClick={() => {
+                const idMovie = [];
+                favouriteMovies.map(({ id }) => idMovie.push(id));
+
+                if (idMovie.includes(id)) {
+                  return;
+                }
+                dispatch(
+                  moviesActions.addFavouriteMovie(
+                    id,
+                    title,
+                    overview,
+                    genres,
+                    poster_path,
+                    vote_average,
+                    runtime,
+                    release_date,
+                  ),
+                );
+              }}
+            >
+              Add to favourite
+            </button>
 
             <div className="movie-info">
               <p>Additional information</p>

@@ -21,6 +21,11 @@ export default function Navigation() {
               Movies
             </NavLink>
           </li>
+          <li>
+            <NavLink exact to="/library">
+              Library
+            </NavLink>
+          </li>
         </ul>
       </nav>
     </div>

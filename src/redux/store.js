@@ -22,14 +22,15 @@ const middleware = [
   /* logger, */
 ];
 
-const authPersistConfig = {
+const moviesPersistConfig = {
   key: 'auth',
   storage,
+  whitelist: ['favouriteMovies'],
 };
 
 const store = configureStore({
   reducer: {
-    filmoteka: moviesReducer,
+    filmoteka: persistReducer(moviesPersistConfig, moviesReducer),
   },
   middleware,
   devTools: process.env.NODE_ENV === 'development',
@@ -37,4 +38,4 @@ const store = configureStore({
 
 const persistor = persistStore(store);
 
-export default { persistor, store };
+export default { store, persistor };

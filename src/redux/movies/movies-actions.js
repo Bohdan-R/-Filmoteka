@@ -49,6 +49,31 @@ const fetchMovieImagesRequest = createAction('movies/fetchMovieImagesRequest');
 const fetchMovieImagesSuccess = createAction('movies/fetchMovieImagesSuccess');
 const fetchMovieImagesError = createAction('movies/fetchMovieImagesError');
 
+const addFavouriteMovie = createAction(
+  'movies/addFavouriteMovie',
+  (
+    id,
+    title,
+    overview,
+    genres,
+    poster_path,
+    vote_average,
+    runtime,
+    release_date,
+  ) => ({
+    payload: {
+      id,
+      title,
+      overview,
+      genres,
+      poster_path,
+      vote_average,
+      runtime,
+      release_date,
+    },
+  }),
+);
+
 export default {
   fetchPopularMoviesRequest,
   fetchPopularMoviesSuccess,
@@ -76,4 +101,5 @@ export default {
   fetchMovieImagesRequest,
   fetchMovieImagesSuccess,
   fetchMovieImagesError,
+  addFavouriteMovie,
 };
