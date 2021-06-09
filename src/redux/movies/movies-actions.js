@@ -74,6 +74,8 @@ const addFavouriteMovie = createAction(
   }),
 );
 
+const deleteFavouriteMovie = createAction('movies/deleteFavouriteMovie');
+
 export default {
   fetchPopularMoviesRequest,
   fetchPopularMoviesSuccess,
@@ -102,4 +104,5 @@ export default {
   fetchMovieImagesSuccess,
   fetchMovieImagesError,
   addFavouriteMovie,
+  deleteFavouriteMovie,
 };

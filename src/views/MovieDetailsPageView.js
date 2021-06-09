@@ -87,31 +87,36 @@ export default function MovieDetailsPage() {
               </div>
             </div>
 
-            <button
-              type="button"
-              onClick={() => {
-                const idMovie = [];
-                favouriteMovies.map(({ id }) => idMovie.push(id));
-
-                if (idMovie.includes(id)) {
-                  return;
-                }
-                dispatch(
-                  moviesActions.addFavouriteMovie(
-                    id,
-                    title,
-                    overview,
-                    genres,
-                    poster_path,
-                    vote_average,
-                    runtime,
-                    release_date,
-                  ),
-                );
-              }}
-            >
-              Add to favourite
-            </button>
+            {!favouriteMovies.find(movie => movie.id === id) ? (
+              <button
+                type="button"
+                onClick={() => {
+                  dispatch(
+                    moviesActions.addFavouriteMovie(
+                      id,
+                      title,
+                      overview,
+                      genres,
+                      poster_path,
+                      vote_average,
+                      runtime,
+                      release_date,
+                    ),
+                  );
+                }}
+              >
+                Add to favourite
+              </button>
+            ) : (
+              <button
+                type="button"
+                onClick={() => {
+                  dispatch(moviesActions.deleteFavouriteMovie(id));
+                }}
+              >
+                Delete
+              </button>
+            )}
 
             <div className="movie-info">
               <p>Additional information</p>
