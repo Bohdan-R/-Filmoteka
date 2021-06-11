@@ -9,14 +9,12 @@ const movies = createReducer([], {
 });
 
 const totalPopularMovies = createReducer(0, {
-  [moviesActions.fetchTotalPopularMoviesSuccess]: (_, { payload }) =>
-    Math.ceil(payload / 20),
+  [moviesActions.fetchTotalPopularMoviesSuccess]: (_, { payload }) => Math.ceil(payload / 20),
   [moviesActions.clearTotalResultMovies]: () => 0,
 });
 
 const totalMovies = createReducer(0, {
-  [moviesActions.fetchTotalMoviesSuccess]: (_, { payload }) =>
-    Math.ceil(payload / 20),
+  [moviesActions.fetchTotalMoviesSuccess]: (_, { payload }) => Math.ceil(payload / 20),
   [moviesActions.clearTotalResultMovies]: () => 0,
 });
 
@@ -40,11 +38,20 @@ const movieImages = createReducer(null, {
 });
 
 const favouriteMovies = createReducer([], {
-  [moviesActions.addFavouriteMovie]: (state, { payload }) => [
-    ...state,
-    payload,
-  ],
+  [moviesActions.addFavouriteMovie]: (state, { payload }) => [...state, payload],
   [moviesActions.deleteFavouriteMovie]: (state, { payload }) =>
+    state.filter(({ id }) => id !== payload),
+});
+
+const queueMovies = createReducer([], {
+  [moviesActions.addQueueMovie]: (state, { payload }) => [...state, payload],
+  [moviesActions.deleteQueueMovie]: (state, { payload }) =>
+    state.filter(({ id }) => id !== payload),
+});
+
+const watchedMovies = createReducer([], {
+  [moviesActions.addWatchedMovie]: (state, { payload }) => [...state, payload],
+  [moviesActions.deleteWatchedMovie]: (state, { payload }) =>
     state.filter(({ id }) => id !== payload),
 });
 
@@ -57,4 +64,6 @@ export default combineReducers({
   movieReview,
   movieImages,
   favouriteMovies,
+  queueMovies,
+  watchedMovies,
 });

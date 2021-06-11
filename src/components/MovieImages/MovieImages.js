@@ -4,12 +4,11 @@ import { useParams, useLocation } from 'react-router-dom';
 import moviesOperations from '../../redux/movies/movies-operations';
 import moviesSelectors from '../../redux/movies/movies-selectors';
 
-export default function MovieImages() {
+export default function MovieImages(movieId) {
   const dispatch = useDispatch();
 
   const images = useSelector(moviesSelectors.getMovieImages);
   const location = useLocation();
-  const { movieId } = useParams();
 
   useEffect(() => {
     dispatch(moviesOperations.fetchMovieImages(movieId));

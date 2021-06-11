@@ -3,8 +3,11 @@ import { Switch, Route } from 'react-router-dom';
 import AppBar from './components/AppBar';
 import InTrendView from './views/InTrendView';
 import MoviesView from './views/MoviesView';
-import LibraryView from './views/LibraryView';
+import FavouriteMoviesView from './views/FavouriteMoviesView';
+import QueueMoviesView from './views/QueueMoviesView';
+import WatchedMoviesView from './views/WatchedMoviesView';
 import MovieDetailsPage from './views/MovieDetailsPageView';
+import SearchForm from './components/SearchForm';
 
 export default function App() {
   return (
@@ -18,9 +21,16 @@ export default function App() {
         <Route exact path="/movies">
           <MoviesView />
         </Route>
-        <Route exact path="/library">
-          <LibraryView />
+        <Route exact path="/favourite">
+          <FavouriteMoviesView />
         </Route>
+        <Route exact path="/queue">
+          <QueueMoviesView />
+        </Route>
+        <Route exact path="/watched">
+          <WatchedMoviesView />
+        </Route>
+
         <Route path="/movies/:movieId">
           <MovieDetailsPage />
         </Route>

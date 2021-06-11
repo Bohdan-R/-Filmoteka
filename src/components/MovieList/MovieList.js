@@ -1,8 +1,9 @@
 import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
 
-export default function MoviesList({ movies, page = null }) {
+export default function MoviesList({ movies, page = 1 }) {
   const location = useLocation();
+  console.log(movies);
 
   return (
     <ul className="movies__list">
@@ -11,7 +12,8 @@ export default function MoviesList({ movies, page = null }) {
           to={{
             pathname: `movies/${id}`,
             state: {
-              from: { ...location, page },
+              ...location,
+              page,
             },
           }}
           key={id}

@@ -22,10 +22,7 @@ export default function Cast() {
         cast.map(actor => (
           <li key={actor.id}>
             <div className="cast-card">
-              <img
-                alt=""
-                src={`https://image.tmdb.org/t/p/w500/${actor.profile_path}`}
-              />
+              <img alt="" src={`https://image.tmdb.org/t/p/w500/${actor.profile_path}`} />
               <p>{actor.name}</p>
               <p>Character: {actor.character}</p>
             </div>

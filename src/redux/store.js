@@ -25,7 +25,7 @@ const middleware = [
 const moviesPersistConfig = {
   key: 'movie',
   storage,
-  whitelist: ['favouriteMovies'],
+  whitelist: ['favouriteMovies', 'queueMovies', 'watchedMovies'],
 };
 
 const store = configureStore({

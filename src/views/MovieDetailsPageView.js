@@ -15,6 +15,7 @@ import moviesActions from '../redux/movies/movies-actions';
 import Cast from '../components/Cast';
 import Review from '../components/Review';
 import MovieImages from '../components/MovieImages';
+import MoviesList from '../components/MovieList';
 
 export default function MovieDetailsPage() {
   const dispatch = useDispatch();
@@ -29,6 +30,8 @@ export default function MovieDetailsPage() {
     release_date,
   } = useSelector(moviesSelectors.getMovieDetails);
   const favouriteMovies = useSelector(moviesSelectors.getFavouriteMovies);
+  const queueMovies = useSelector(moviesSelectors.getQueueMovies);
+  const watchedMovies = useSelector(moviesSelectors.getWatchedMovies);
 
   const history = useHistory();
   const params = useParams();
@@ -37,18 +40,15 @@ export default function MovieDetailsPage() {
 
   const movieId = params.movieId;
 
-  /*   console.log(location);
-  console.log(match.url);
-  console.log(match.path);
-  console.log(movieId); */
+  console.log(location);
 
   useEffect(() => {
     dispatch(moviesOperations.fetchMovieDetails(movieId));
   }, [dispatch, movieId]);
 
   const handleGoBack = () => {
-    if (location.state && location.state.from) {
-      return history.push(location.state.from);
+    if (location.state) {
+      return history.push(location.state);
     }
 
     history.push('/');
@@ -114,7 +114,69 @@ export default function MovieDetailsPage() {
                   dispatch(moviesActions.deleteFavouriteMovie(id));
                 }}
               >
-                Delete
+                Delete from favourite
+              </button>
+            )}
+
+            {!queueMovies.find(movie => movie.id === id) ? (
+              <button
+                type="button"
+                onClick={() => {
+                  dispatch(
+                    moviesActions.addQueueMovie(
+                      id,
+                      title,
+                      overview,
+                      genres,
+                      poster_path,
+                      vote_average,
+                      runtime,
+                      release_date,
+                    ),
+                  );
+                }}
+              >
+                Add to queue
+              </button>
+            ) : (
+              <button
+                type="button"
+                onClick={() => {
+                  dispatch(moviesActions.deleteQueueMovie(id));
+                }}
+              >
+                Delete from queue
+              </button>
+            )}
+
+            {!watchedMovies.find(movie => movie.id === id) ? (
+              <button
+                type="button"
+                onClick={() => {
+                  dispatch(
+                    moviesActions.addWatchedMovie(
+                      id,
+                      title,
+                      overview,
+                      genres,
+                      poster_path,
+                      vote_average,
+                      runtime,
+                      release_date,
+                    ),
+                  );
+                }}
+              >
+                Add to watched
+              </button>
+            ) : (
+              <button
+                type="button"
+                onClick={() => {
+                  dispatch(moviesActions.deleteWatchedMovie(id));
+                }}
+              >
+                Delete from watched
               </button>
             )}
 
@@ -126,7 +188,7 @@ export default function MovieDetailsPage() {
                     to={{
                       pathname: `${match.url}/cast`,
                       state: {
-                        from: { ...location.state.from },
+                        ...location.state,
                       },
                     }}
                     className="nav__link"
@@ -140,7 +202,7 @@ export default function MovieDetailsPage() {
                     to={{
                       pathname: `${match.url}/review`,
                       state: {
-                        from: { ...location.state.from },
+                        ...location.state,
                       },
                     }}
                     className="nav__link"
@@ -154,7 +216,7 @@ export default function MovieDetailsPage() {
                     to={{
                       pathname: `${match.url}/images`,
                       state: {
-                        from: { ...location.state.from },
+                        ...location.state,
                       },
                     }}
                     className="nav__link"
@@ -168,14 +230,14 @@ export default function MovieDetailsPage() {
           </div>
 
           <Switch>
-            <Route path={`${match.path}/cast`} movieId={movieId}>
-              <Cast />
+            <Route path={`${match.path}/cast`}>
+              <Cast /* movieId={movieId} */ />
             </Route>
-            <Route path={`${match.path}/review`} movieId={movieId}>
-              <Review />
+            <Route path={`${match.path}/review`}>
+              <Review movieId={movieId} />
             </Route>
-            <Route path={`${match.path}/images`} movieId={movieId}>
-              <MovieImages />
+            <Route path={`${match.path}/images`}>
+              <MovieImages movieId={movieId} />
             </Route>
           </Switch>
         </div>

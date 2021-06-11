@@ -38,19 +38,23 @@ export default function SearchForm() {
     setSearch('');
   }, [location]);
 
+  console.log(location);
+
   return (
-    <form className="search-form" onSubmit={handleSubmit}>
-      <div className="search-form__input-wrap">
-        <input
-          className="search-form__input"
-          type="text"
-          name="name"
-          value={search}
-          autoComplete="off"
-          onChange={handleSearchChange}
-          placeholder="Search movies"
-        />
-      </div>
-    </form>
+    <div>
+      <form className="search-form" onSubmit={handleSubmit}>
+        <div className="search-form__input-wrap">
+          <input
+            className="search-form__input"
+            type="text"
+            name="name"
+            value={search}
+            autoComplete="off"
+            onChange={handleSearchChange}
+            placeholder="Search movies"
+          />
+        </div>
+      </form>
+    </div>
   );
 }

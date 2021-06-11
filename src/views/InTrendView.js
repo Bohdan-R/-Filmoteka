@@ -13,8 +13,6 @@ export default function MoviesView() {
   const location = useLocation();
   const [page, setPage] = useState(location?.page || 1);
 
-  console.log(location);
-
   const movies = useSelector(moviesSelectors.getMovies);
   const totalPages = useSelector(moviesSelectors.getTotalResultPopularMovies);
 

@@ -22,7 +22,7 @@ export default function Navigation() {
             </NavLink>
           </li>
           <li>
-            <NavLink exact to="/library">
+            <NavLink exact to="/favourite">
               Library
             </NavLink>
           </li>
