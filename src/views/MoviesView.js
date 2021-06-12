@@ -40,6 +40,11 @@ export default function MoviesView() {
       return;
     }
     dispatch(moviesOperations.fetchMovies(search, page));
+
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth',
+    });
   }, [dispatch, page]);
 
   const handlePageClick = event => {

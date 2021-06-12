@@ -1,12 +1,22 @@
 import { createAction } from '@reduxjs/toolkit';
 
-const fetchPopularMoviesRequest = createAction('movies/fetchPopularMoviesRequest');
-const fetchPopularMoviesSuccess = createAction('movies/fetchPopularMoviesSuccess');
+const fetchPopularMoviesRequest = createAction(
+  'movies/fetchPopularMoviesRequest',
+);
+const fetchPopularMoviesSuccess = createAction(
+  'movies/fetchPopularMoviesSuccess',
+);
 const fetchPopularMoviesError = createAction('movies/fetchPopularMoviesError');
 
-const fetchTotalPopularMoviesRequest = createAction('movies/fetchTotalPopularMoviesRequest');
-const fetchTotalPopularMoviesSuccess = createAction('movies/fetchTotalPopularMoviesSuccess');
-const fetchTotalPopularMoviesError = createAction('movies/fetchTotalPopularMoviesError');
+const fetchTotalPopularMoviesRequest = createAction(
+  'movies/fetchTotalPopularMoviesRequest',
+);
+const fetchTotalPopularMoviesSuccess = createAction(
+  'movies/fetchTotalPopularMoviesSuccess',
+);
+const fetchTotalPopularMoviesError = createAction(
+  'movies/fetchTotalPopularMoviesError',
+);
 
 const fetchMoviesRequest = createAction('movies/fetchMoviesRequest');
 const fetchMoviesSuccess = createAction('movies/fetchMoviesSuccess');
@@ -19,8 +29,12 @@ const fetchTotalMoviesError = createAction('movies/fetchTotalMoviesError');
 const clearMovies = createAction('movies/clearMovies');
 const clearTotalResultMovies = createAction('movies/clearTotalResultMovies');
 
-const fetchMovieDetailsRequest = createAction('movies/fetchMovieDetailsRequest');
-const fetchMovieDetailsSuccess = createAction('movies/fetchMovieDetailsSuccess');
+const fetchMovieDetailsRequest = createAction(
+  'movies/fetchMovieDetailsRequest',
+);
+const fetchMovieDetailsSuccess = createAction(
+  'movies/fetchMovieDetailsSuccess',
+);
 const fetchMovieDetailsError = createAction('movies/fetchMovieDetailsError');
 
 const fetchMovieCastRequest = createAction('movies/fetchMovieCastRequest');
@@ -35,9 +49,22 @@ const fetchMovieImagesRequest = createAction('movies/fetchMovieImagesRequest');
 const fetchMovieImagesSuccess = createAction('movies/fetchMovieImagesSuccess');
 const fetchMovieImagesError = createAction('movies/fetchMovieImagesError');
 
+const fetchMovieGenresRequest = createAction('movies/fetchMovieGenresRequest');
+const fetchMovieGenresSuccess = createAction('movies/fetchMovieGenresSuccess');
+const fetchMovieGenresError = createAction('movies/fetchMovieGenresError');
+
 const addFavouriteMovie = createAction(
   'movies/addFavouriteMovie',
-  (id, title, overview, genres, poster_path, vote_average, runtime, release_date) => ({
+  (
+    id,
+    title,
+    overview,
+    genres,
+    poster_path,
+    vote_average,
+    runtime,
+    release_date,
+  ) => ({
     payload: {
       id,
       title,
@@ -55,7 +82,16 @@ const deleteFavouriteMovie = createAction('movies/deleteFavouriteMovie');
 
 const addQueueMovie = createAction(
   'movies/addQueueMovie',
-  (id, title, overview, genres, poster_path, vote_average, runtime, release_date) => ({
+  (
+    id,
+    title,
+    overview,
+    genres,
+    poster_path,
+    vote_average,
+    runtime,
+    release_date,
+  ) => ({
     payload: {
       id,
       title,
@@ -73,7 +109,16 @@ const deleteQueueMovie = createAction('movies/deleteQueueMovie');
 
 const addWatchedMovie = createAction(
   'movies/addWatchedMovie',
-  (id, title, overview, genres, poster_path, vote_average, runtime, release_date) => ({
+  (
+    id,
+    title,
+    overview,
+    genres,
+    poster_path,
+    vote_average,
+    runtime,
+    release_date,
+  ) => ({
     payload: {
       id,
       title,
@@ -116,6 +161,9 @@ export default {
   fetchMovieImagesRequest,
   fetchMovieImagesSuccess,
   fetchMovieImagesError,
+  fetchMovieGenresRequest,
+  fetchMovieGenresSuccess,
+  fetchMovieGenresError,
   addFavouriteMovie,
   deleteFavouriteMovie,
   addQueueMovie,

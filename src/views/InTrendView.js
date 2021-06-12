@@ -6,6 +6,7 @@ import moviesOperations from '../redux/movies/movies-operations';
 import moviesSelectors from '../redux/movies/movies-selectors';
 import moviesActions from '../redux/movies/movies-actions';
 import MoviesList from '../components/MovieList';
+import { GrPrevious } from 'react-icons/gr';
 import './viewsStyles/MoviesView.scss';
 
 export default function MoviesView() {
@@ -16,16 +17,16 @@ export default function MoviesView() {
   const movies = useSelector(moviesSelectors.getMovies);
   const totalPages = useSelector(moviesSelectors.getTotalResultPopularMovies);
 
-  /* useEffect(() => {
-    dispatch(moviesOperations.fetchTotalPopularMovies());
-  }, [dispatch]); */
-
   useEffect(() => {
     dispatch(moviesOperations.fetchPopularMovies());
   }, [dispatch]);
 
   useEffect(() => {
     dispatch(moviesOperations.fetchPopularMovies(page));
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth',
+    });
   }, [dispatch, page]);
 
   useEffect(() => {
@@ -44,7 +45,7 @@ export default function MoviesView() {
           <MoviesList movies={movies} page={page} />
 
           <ReactPaginate
-            previousLabel={'previous'}
+            previousLabel={<GrPrevious />}
             nextLabel={'next'}
             breakLabel={'...'}
             breakClassName={'break-me'}

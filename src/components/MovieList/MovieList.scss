@@ -1,0 +1,146 @@
+@import '../../styles/base.scss';
+
+/* .movies {
+    width: 1280px;
+    margin: 0 auto;
+} */
+
+.movies__list {
+    @extend %list;
+    display: flex;
+    flex-wrap: wrap;
+
+    margin: -15px;
+    /* outline: 1px solid black; */
+}
+
+.movies__link {
+    width: 280px;
+    height: 420px;
+    margin: 15px;
+}
+
+.movies__card {
+    position: relative;
+    width: 100%;
+    height: 100%;
+
+
+    perspective: 1000px;
+}
+
+.front,
+.back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+
+    justify-content: center;
+    align-items: center;
+
+    border-radius: 4px;
+
+    overflow: hidden;
+    backface-visibility: hidden;
+    transition: 750ms;
+}
+
+.front {
+    opacity: 1;
+}
+
+.back {
+    padding: 30px 20px;
+
+    background-color: #fff;
+    transform: rotateY(180deg);
+    opacity: 0;
+}
+
+.movies__card:hover .front {
+    transform: rotateY(180deg);
+    opacity: 0;
+}
+
+.movies__card:hover .back {
+    transform: rotateY(360deg);
+    opacity: 1;
+    box-shadow: 0 0 15px 4px rgba(0, 0, 0, 0.15),
+
+}
+
+.movies__card__title {
+    margin-bottom: 60px;
+    text-align: center;
+    font-size: 20px;
+}
+
+.movies__card__info-title {
+    font-size: 14px;
+    font-weight: 400;
+    margin-bottom: 7px;
+}
+
+.movies__card__info-item {
+    margin-bottom: 25px;
+
+    &>span {
+        display: inline-block;
+        padding: 3px 5px;
+        border-radius:4px;
+        color: #000;
+        background-color: #fdd835;
+    }
+}
+
+.movies__card__genres-list {
+    @extend %list;
+    display: flex;
+    flex-wrap: wrap;
+    margin-bottom: 135px;
+
+
+}
+
+.movies__card__genres-item {
+    &:last-child span {
+        display: none;
+    }
+}
+
+.movies__card__date {
+    text-align: center;
+    font-size: 14px;
+    font-weight: 400;
+
+    &>span {
+        font-size: 16px;
+        font-weight: 500;
+    }
+}
+
+.movies__card__icon-list {
+    @extend %list;
+    position: absolute;
+    bottom: 80px;
+    left: 50%;
+
+    transform: translateX(-50%);
+
+    display: flex;
+}
+
+.movies__card__icon-item {
+    font-size: 40px;
+    color: #aaaaaa;
+
+    &:not(:last-child) {
+        margin-right: 15px;
+    }
+}
+
+.movies__card__icon-item--active {
+    color:#ff9800;
+}

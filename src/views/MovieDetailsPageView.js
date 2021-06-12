@@ -32,6 +32,8 @@ export default function MovieDetailsPage() {
   const favouriteMovies = useSelector(moviesSelectors.getFavouriteMovies);
   const queueMovies = useSelector(moviesSelectors.getQueueMovies);
   const watchedMovies = useSelector(moviesSelectors.getWatchedMovies);
+  const movie = useSelector(moviesSelectors.getMovieDetails);
+  console.log(movie);
 
   const history = useHistory();
   const params = useParams();
@@ -57,7 +59,7 @@ export default function MovieDetailsPage() {
   return (
     <>
       {genres && (
-        <div>
+        <div className="container">
           <div>
             <button type="button" onClick={handleGoBack}>
               Go back

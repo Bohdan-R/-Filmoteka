@@ -94,6 +94,21 @@ const fetchMovieImages = movieId => async dispatch => {
   }
 };
 
+const fetchMovieGenres = () => async dispatch => {
+  dispatch(moviesActions.fetchMovieGenresRequest());
+
+  try {
+    const { data } = await axios.get(
+      `/genre/movie/list?api_key=${apiKey}&language=en-US`,
+    );
+
+    console.log(data.genres);
+    dispatch(moviesActions.fetchMovieGenresSuccess(data.genres));
+  } catch (error) {
+    dispatch(moviesActions.fetchMovieGenresError(error));
+  }
+};
+
 export default {
   fetchPopularMovies,
   fetchMovies,
@@ -101,4 +116,5 @@ export default {
   fetchMovieCast,
   fetchMovieReview,
   fetchMovieImages,
+  fetchMovieGenres,
 };
