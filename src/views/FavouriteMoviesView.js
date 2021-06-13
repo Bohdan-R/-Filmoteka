@@ -22,17 +22,29 @@ export default function MoviesView() {
     <main>
       <section className="section">
         <div className="container">
-          <ul>
-            <li>
-              <NavLink to={`${match.url}`}>Favourite</NavLink>
-            </li>
-            <li>
-              <NavLink to="/queue">Queue</NavLink>
-            </li>
-            <li>
-              <NavLink to="/watched">Watched</NavLink>
-            </li>
-          </ul>
+          <div className="nav-lib-container">
+            <ul className="nav-lib__list">
+              <li className="nav-lib__item">
+                <NavLink
+                  to={`${match.url}`}
+                  className="nav-lib__link"
+                  activeClassName="nav-lib__link--active"
+                >
+                  Favourite
+                </NavLink>
+              </li>
+              <li className="nav-lib__item">
+                <NavLink to="/queue" className="nav-lib__link">
+                  Queue
+                </NavLink>
+              </li>
+              <li className="nav-lib__item">
+                <NavLink to="/watched" className="nav-lib__link">
+                  Watched
+                </NavLink>
+              </li>
+            </ul>
+          </div>
 
           <MoviesList movies={favouriteMovies} />
         </div>

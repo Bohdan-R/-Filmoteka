@@ -1,6 +1,7 @@
 import React from 'react';
 import { Switch, Route } from 'react-router-dom';
 import AppBar from './components/AppBar';
+import Footer from './components/Footer';
 import InTrendView from './views/InTrendView';
 import MoviesView from './views/MoviesView';
 import FavouriteMoviesView from './views/FavouriteMoviesView';
@@ -11,7 +12,7 @@ import SearchForm from './components/SearchForm';
 
 export default function App() {
   return (
-    <>
+    <div className="page">
       <AppBar />
 
       <Switch>
@@ -35,6 +36,8 @@ export default function App() {
           <MovieDetailsPage />
         </Route>
       </Switch>
-    </>
+
+      <Footer />
+    </div>
   );
 }

@@ -93,7 +93,7 @@ export default function MoviesList({ movies, page = 1 }) {
                     </li>
                   </ul>
                   <h2 className="movies__card__title">{title}</h2>
-                  <p className="movies__card__info-title">vote</p>
+                  <p className="movies__card__info-title">mark</p>
                   <p className="movies__card__info-item">
                     <span>IMDb</span>&nbsp;&nbsp;
                     {vote_average}
@@ -108,7 +108,8 @@ export default function MoviesList({ movies, page = 1 }) {
                     ))}
                   </ul>
                   <p className="movies__card__date">
-                    release data <span>&nbsp;{release_date}</span>
+                    release data
+                    <span>&nbsp;{release_date ? release_date : 'coming soon'}</span>
                   </p>
                   {/* <p className="movies__card__info-item"></p> */}
                 </div>

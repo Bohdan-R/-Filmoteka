@@ -8,6 +8,7 @@ import MoviesList from '../components/MovieList';
 import Navigation from '../components/AppBar/Navigation';
 import SearchForm from '../components/SearchForm';
 import Cast from '../components/Cast';
+import './viewsStyles/LibraryView.scss';
 
 export default function MoviesView() {
   const dispatch = useDispatch();
@@ -21,17 +22,29 @@ export default function MoviesView() {
     <main>
       <section className="section">
         <div className="container">
-          <ul>
-            <li>
-              <NavLink to="/favourite">Favourite</NavLink>
-            </li>
-            <li>
-              <NavLink to={`${match.url}`}>Queue</NavLink>
-            </li>
-            <li>
-              <NavLink to="/watched">Watched</NavLink>
-            </li>
-          </ul>
+          <div className="nav-lib-container">
+            <ul className="nav-lib__list">
+              <li className="nav-lib__item">
+                <NavLink to="/favourite" className="nav-lib__link">
+                  Favourite
+                </NavLink>
+              </li>
+              <li className="nav-lib__item">
+                <NavLink
+                  to={`${match.url}`}
+                  className="nav-lib__link"
+                  activeClassName="nav-lib__link--active"
+                >
+                  Queue
+                </NavLink>
+              </li>
+              <li className="nav-lib__item">
+                <NavLink to="/watched" className="nav-lib__link">
+                  Watched
+                </NavLink>
+              </li>
+            </ul>
+          </div>
 
           <MoviesList movies={queueMovies} />
         </div>
