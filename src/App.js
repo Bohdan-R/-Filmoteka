@@ -7,7 +7,7 @@ import MoviesView from './views/MoviesView';
 import FavouriteMoviesView from './views/FavouriteMoviesView';
 import QueueMoviesView from './views/QueueMoviesView';
 import WatchedMoviesView from './views/WatchedMoviesView';
-import MovieDetailsPage from './views/MovieDetailsPageView';
+import MovieDetailsPageView from './views/MovieDetailsPageView';
 import SearchForm from './components/SearchForm';
 
 export default function App() {
@@ -33,7 +33,7 @@ export default function App() {
         </Route>
 
         <Route path="/movies/:movieId">
-          <MovieDetailsPage />
+          <MovieDetailsPageView />
         </Route>
       </Switch>
 

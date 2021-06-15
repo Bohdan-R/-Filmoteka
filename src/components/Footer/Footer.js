@@ -11,21 +11,27 @@ export default function AppBar() {
             © 2021 | All Rights Reserved | Developed by <span>Bohdan Remeniuk</span>
           </p>
           <div className="footer__contacts">
-            <p className="footer__contacts__title">contacts</p>
+            <p className="footer__contacts__title">contacts:</p>
             <ul className="footer__contacts__list">
               <li className="footer__contacts__item">
-                <a href="https://github.com/Bohdan-R" rel="me noreferrer" target="_blank">
-                  <AiFillGithub />
+                <a
+                  className="footer__contacts__link"
+                  href="https://github.com/Bohdan-R"
+                  rel="me noreferrer"
+                  target="_blank"
+                >
+                  <AiFillGithub className="footer__contacts__link-icon" />
                   GitHub
                 </a>
               </li>
               <li className="footer__contacts__item">
                 <a
+                  className="footer__contacts__link"
                   href="https://www.linkedin.com/in/bohdan-remeniuk-429aa1213/"
                   rel="me noreferrer"
                   target="_blank"
                 >
-                  <AiFillLinkedin />
+                  <AiFillLinkedin className="footer__contacts__link-icon" />
                   LinkedIn
                 </a>
               </li>

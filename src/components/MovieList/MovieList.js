@@ -102,7 +102,7 @@ export default function MoviesList({ movies, page = 1 }) {
                   <ul className="movies__card__genres-list">
                     {genresName.map(genre => (
                       <li key={genre} className="movies__card__genres-item">
-                        {genre.toLowerCase()}
+                        {genre}
                         <span>,&nbsp;&nbsp;</span>
                       </li>
                     ))}

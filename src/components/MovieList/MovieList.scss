@@ -1,165 +1,159 @@
 @import '../../styles/base.scss';
 
 .movies {
-    margin-bottom: 70px;
+  margin-bottom: 70px;
 }
 
 .movies__list {
-    @extend %list;
-    display: flex;
-    flex-wrap: wrap;
+  @extend %list;
+  display: flex;
+  flex-wrap: wrap;
 
-    margin: -15px;
-    /* outline: 1px solid black; */
+  margin: -15px;
+  /* outline: 1px solid black; */
 }
 
 .movies__link {
-    width: 280px;
-    height: 420px;
-    margin: 15px;
+  width: 280px;
+  height: 420px;
+  margin: 15px;
 }
 
 .movies__card {
-    position: relative;
-    width: 100%;
-    height: 100%;
+  position: relative;
+  width: 100%;
+  height: 100%;
 
-    color: #fff;
-    perspective: 1000px;
+  color: #fff;
+  perspective: 1000px;
 }
 
 .front,
 .back {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    left: 0;
-    top: 0;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0;
 
-    justify-content: center;
-    align-items: center;
+  justify-content: center;
+  align-items: center;
 
-    border-radius: 4px;
+  border-radius: 4px;
 
-    overflow: hidden;
-    backface-visibility: hidden;
-    transition: 750ms;
+  overflow: hidden;
+  backface-visibility: hidden;
+  transition: 750ms;
 }
 
 .front {
-    opacity: 1;
+  opacity: 1;
 }
 
 .back {
-    padding: 30px 20px;
+  padding: 30px 20px;
 
-    background-color: #484848;
-    transform: rotateY(180deg);
-    opacity: 0;
+  background-color: #484848;
+  transform: rotateY(180deg);
+  opacity: 0;
 }
 
 .movies__card:hover .front {
-    transform: rotateY(180deg);
-    opacity: 0;
+  transform: rotateY(180deg);
+  opacity: 0;
 }
 
 .movies__card:hover .back {
-    transform: rotateY(360deg);
-    opacity: 1;
-    /* box-shadow: 2px 2px 5px rgba(33, 235, 255, .7),
+  transform: rotateY(360deg);
+  opacity: 1;
+  /* box-shadow: 2px 2px 5px rgba(33, 235, 255, .7),
     4px 4px 25px rgba(33, 235, 255, .55),
     6px 6px 40px rgba(33, 235, 255, .4),
     -2px -2px 5px rgba(33, 235, 255, .7),
     -4px -4px 25px rgba(33, 235, 255, .55),
     -6px -6px 40px rgba(33, 235, 255, .4); */
 
-    box-shadow: 0 0 4px 2px rgba(33, 235, 255, .8),
-    0 0 15px  rgba(33, 235, 255, .9),
-    /* 0 0 30px rgba(33, 235, 255, .9), */
-    0 0 50px rgba(33, 235, 255, .6);
+  box-shadow: 0 0 4px 2px rgba(33, 235, 255, 0.8), 0 0 15px rgba(33, 235, 255, 0.9),
+    /* 0 0 30px rgba(33, 235, 255, .9), */ 0 0 50px rgba(33, 235, 255, 0.6);
 
-    /* box-shadow: 0 0 2px 2px rgba(33, 235, 255, .85),
+  /* box-shadow: 0 0 2px 2px rgba(33, 235, 255, .85),
     0 0 5px 2px rgba(33, 235, 255, .85),
     0 0 25px 3px rgba(33, 235, 255, .3),
     0 0 50px 6px rgba(33, 235, 255, .3); */
-
 }
 
 .movies__card__title {
-    margin-bottom: 60px;
-    text-align: center;
-    font-size: 22px;
-    color: #21ebff;
+  margin-bottom: 60px;
+  text-align: center;
+  font-size: 22px;
+  color: #21ebff;
 }
 
 .movies__card__info-title {
-    font-size: 14px;
-    font-weight: 300;
-    margin-bottom: 7px;
+  font-size: 14px;
+  font-weight: 300;
+  margin-bottom: 7px;
 }
 
 .movies__card__info-item {
-    margin-bottom: 25px;
+  margin-bottom: 25px;
 
-    &>span {
-        display: inline-block;
-        padding: 3px 5px;
-        border-radius:4px;
-        color: #000;
-        font-weight: 700;
-        background-color: #fdd835;
-    }
+  & > span {
+    padding: 3px 5px;
+    border-radius: 4px;
+    color: #000;
+    font-weight: 700;
+    background-color: #fdd835;
+  }
 }
 
 .movies__card__genres-list {
-    @extend %list;
-    display: flex;
-    flex-wrap: wrap;
-    margin-bottom: 135px;
-
-
+  @extend %list;
+  display: flex;
+  flex-wrap: wrap;
+  margin-bottom: 135px;
 }
 
 .movies__card__genres-item {
-    &:last-child span {
-        display: none;
-    }
+  &:last-child span {
+    display: none;
+  }
 }
 
 .movies__card__date {
-    position: absolute;
-    bottom: 30px;
-    left: 55px;
-    font-size: 14px;
-    font-weight: 300;
+  position: absolute;
+  bottom: 30px;
+  left: 55px;
+  font-size: 14px;
+  font-weight: 300;
 
-    &>span {
-        font-size: 16px;
-        font-weight: 500;
-        color: #21ebff;
-    }
+  & > span {
+    font-size: 16px;
+    font-weight: 500;
+    color: #21ebff;
+  }
 }
 
 .movies__card__icon-list {
-    @extend %list;
-    position: absolute;
-    bottom: 65px;
-    left: 50%;
+  @extend %list;
+  position: absolute;
+  bottom: 65px;
+  left: 50%;
 
-    transform: translateX(-50%);
+  transform: translateX(-50%);
 
-    display: flex;
+  display: flex;
 }
 
 .movies__card__icon-item {
-    font-size: 40px;
-    color: #aaaaaa;
+  font-size: 40px;
+  color: $icon-color;
 
-    &:not(:last-child) {
-        margin-right: 15px;
-    }
+  &:not(:last-child) {
+    margin-right: 15px;
+  }
 }
 
 .movies__card__icon-item--active {
-    color:#21ebff;
+  color: #21ebff;
 }

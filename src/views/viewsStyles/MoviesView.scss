@@ -22,12 +22,12 @@
     padding: 0 20px;
 
     border: none;
-    border-bottom: 1px solid #969696;
+    border-bottom: 1px solid $icon-color;
     background-color: transparent;
     outline: none;
 
-    font-size: 20px;
-    color: #969696;
+    font-size: 18px;
+    color: $icon-color;
     /* font-weight: 400; */
     letter-spacing: 2px;
     line-height: 2em;
@@ -40,11 +40,11 @@
     transition: 300ms;
 
     &:focus {
-        border-bottom: 1px solid #21ebff;
-        color: #fff;
-        text-shadow: 0 0 2px #21ebff,
-        0 0 4px #21ebff,
-        0 0 8px #21ebff;
+        border-bottom: 1px solid $accent-color;
+        color: $main-text-color;
+        text-shadow: 0 0 2px $accent-color,
+        0 0 4px $accent-color,
+        0 0 8px $accent-color;
         /* 0 0 40px #21ebff,
         0 0 80px #21ebff; */
     }
@@ -75,20 +75,29 @@
     }
 } */
 
-.search-form__icon {
+.search-form__button {
+    @extend %button;
     position: absolute;
-    top: 50%;
-    right: 10px;
-    transform: translateY(-50%);
+    top: 0;
+    right: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 37px;
+    height: 37px;
 
-    color: #969696;
+    background-color: transparent;
+}
+
+.search-form__icon {
+    color: $icon-color;
     font-size: 30px;
     /* -webkit-box-reflect: below 12px linear-gradient(transparent 35%, #000); */
 
     transition: 300ms;
 
     .search-form__input-wrap:focus-within & {
-        color: #21ebff;
+        color: $accent-color;
     }
 }
 
@@ -165,6 +174,7 @@
 } */
 
 .pagination {
+    padding: 0;
     margin: 0 auto;
     display: flex;
     align-items: center;
@@ -175,12 +185,12 @@
 
 .pagination__page {
     position: relative;
-    width: 50px;
-    height: 50px;
+    width: 40px;
+    height: 40px;
     
     
-    font-size: 20px;
-    font-weight: 700;
+    font-size: 18px;
+    font-weight: 500;
 
     &:not(:last-child) {
         margin-right: 10px;
@@ -194,17 +204,17 @@
     width: 100%;
     height: 100%;
 
-    color: #fff;
+    color: $main-text-color;
 
     border-radius: 4px;
 
     transition: 300ms;
 
     &:hover {
-        color: #111;
-        background-color: #21ebff;
-        box-shadow: 0 0 2px #21ebff,
-        0 0 10px #21ebff;
+        color: $secondary-text-color;
+        background-color: $accent-color;
+        box-shadow: 0 0 2px $accent-color,
+        0 0 10px $accent-color;
     }
 }
 
@@ -213,12 +223,12 @@
 }
 
 .pagination__active-link {
-    color: #111;
+    color: $secondary-text-color;
     font-weight: 500;
 
-    background-color: #21ebff;
-    box-shadow: 0 0 2px #21ebff,
-    0 0 10px #21ebff;
+    background-color: $accent-color;
+    box-shadow: 0 0 2px $accent-color,
+    0 0 10px $accent-color;
 
     transform: scale(1.1);
 }

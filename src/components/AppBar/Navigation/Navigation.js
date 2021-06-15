@@ -10,7 +10,7 @@ export default function Navigation() {
     <div className="nav-container">
       <div className="logo-box">
         <NavLink exact to="/">
-          <Logo /* width="40" height="40"  */ className="logo-icon" />
+          <Logo className="logo-icon" />
         </NavLink>
         <NavLink exact to="/" className="logo" data-text="MovieApp">
           MovieApp

@@ -88,7 +88,9 @@ export default function MoviesView() {
                 onChange={handleSearchChange}
                 /* placeholder="Search movies" */
               />
-              <BiSearchAlt2 className="search-form__icon" />
+              <button type="submit" className="search-form__button" onSubmit={handleSubmit}>
+                <BiSearchAlt2 className="search-form__icon" />
+              </button>
             </div>
           </form>
           {/* </div> */}
