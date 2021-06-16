@@ -67,7 +67,7 @@ export default function MovieDetailsPageView() {
         {genres && (
           <div className="container">
             <div className="article-container">
-              <div className="article-decorate-line article-decorate-line--down"></div>
+              {/* <div className="article-decorate-line article-decorate-line--down"></div> */}
               <button type="button" className="btn-go-back" onClick={handleGoBack}>
                 <AiOutlineRollback />
               </button>
@@ -232,15 +232,15 @@ export default function MovieDetailsPageView() {
                 </div>
               </div>
 
-              <div className="overview-box">
+              {/* <div className="overview-box">
                 <h3 className="article__content-title">Overview</h3>
                 <p className="article__content-text"> {overview}</p>
-              </div>
+              </div> */}
 
               <div className="article-decorate-line article-decorate-line--up"></div>
 
               <div className="additional-info">
-                <p className="additional-info__title">Additional information</p>
+                {/* <p className="additional-info__title">Additional information</p> */}
                 <ul className="additional-info__list">
                   <li className="additional-info__item">
                     <NavLink
@@ -270,7 +270,7 @@ export default function MovieDetailsPageView() {
                       Review
                     </NavLink>
                   </li>
-                  <li className="additional-info__item">
+                  {/* <li className="additional-info__item">
                     <NavLink
                       to={{
                         pathname: `${match.url}/images`,
@@ -283,11 +283,11 @@ export default function MovieDetailsPageView() {
                     >
                       Movie Images
                     </NavLink>
-                  </li>
+                  </li> */}
                 </ul>
               </div>
 
-              <div className="article-decorate-line article-decorate-line--down"></div>
+              {/* <div className="article-decorate-line article-decorate-line--down"></div> */}
             </div>
 
             <Switch>
@@ -297,9 +297,9 @@ export default function MovieDetailsPageView() {
               <Route path={`${match.path}/review`}>
                 <Review movieId={movieId} />
               </Route>
-              <Route path={`${match.path}/images`}>
+              {/* <Route path={`${match.path}/images`}>
                 <MovieImages movieId={movieId} />
-              </Route>
+              </Route> */}
             </Switch>
           </div>
         )}

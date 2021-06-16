@@ -1,0 +1,51 @@
+@import '../../styles/base.scss';
+
+.review {
+    width: 1000px;
+    margin: 0 auto;
+}
+
+.review__nothing {
+    text-align: center
+}
+
+.review__list {
+    @extend %list;
+    display: flex;
+    flex-direction: column;
+
+    
+}
+
+.review__item {
+    /* background-color: #484848; */
+    border-bottom: 2px solid #484848;
+
+    &:not(:last-child) {
+        margin-bottom: 50px;
+    }
+}
+
+.review__info-box {
+    display: flex;
+    margin-bottom: 15px;
+}
+
+.review__info {
+    margin-right: 15px;
+
+    & > span {
+        color: $accent-color;
+    }
+}
+
+.review__date {
+    margin-bottom: 10px;
+    font-size: 14px;
+    color: $icon-color;
+}
+
+.review__content {
+    margin-bottom: 7px;
+    font-weight: 300;
+}
