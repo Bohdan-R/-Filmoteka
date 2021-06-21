@@ -23,7 +23,8 @@ export default function Cast() {
         {cast &&
           cast.map(actor => (
             <li key={actor.id} className="cast__item">
-              {/* <div className="cast__card">
+              {/* 1 ВАРИАНТ */}
+              <div className="cast__card">
                 <div className="cast__img-box">
                   <img
                     alt=""
@@ -37,9 +38,10 @@ export default function Cast() {
                   <p className="cast__content__title">Character</p>
                   <p className="cast__content__info">{actor.character}</p>
                 </div>
-              </div> */}
+              </div>
 
-              <div className="cast__card">
+              {/* 2 ВАРИАНТ */}
+              {/* <div className="cast__card">
                 <div className="cast__img-box">
                   <img
                     alt=""
@@ -53,7 +55,7 @@ export default function Cast() {
                   <p className="cast__content__info">{actor.character}</p>
                 </div>
               </div>
-              <div className="cast__card-decor"></div>
+              <div className="cast__card-decor"></div> */}
             </li>
           ))}
       </ul>

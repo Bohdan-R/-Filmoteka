@@ -33,6 +33,7 @@ export default function MovieDetailsPageView() {
     vote_average,
     runtime,
     release_date,
+    budget,
   } = useSelector(moviesSelectors.getMovieDetails);
   const favouriteMovies = useSelector(moviesSelectors.getFavouriteMovies);
   const queueMovies = useSelector(moviesSelectors.getQueueMovies);
@@ -66,11 +67,14 @@ export default function MovieDetailsPageView() {
       <section className="section">
         {genres && (
           <div className="container">
-            <div className="article-container">
-              {/* <div className="article-decorate-line article-decorate-line--down"></div> */}
+            <div className="movie-page-container">
               <button type="button" className="btn-go-back" onClick={handleGoBack}>
                 <AiOutlineRollback />
               </button>
+
+              {/* <div className="article-container"> */}
+              {/* <div className="article-decorate-line article-decorate-line--down"></div> */}
+
               <div className="article" id={id}>
                 <div className="article__img-wrap">
                   <img
@@ -80,9 +84,7 @@ export default function MovieDetailsPageView() {
                   />
                 </div>
                 <div className="article__content">
-                  <div className="article__title-box">
-                    <h2 className="article__title">{title}</h2>
-                  </div>
+                  <h2 className="article__title">{title}</h2>
                   <h3 className="article__content-title">Vote</h3>
                   <p className="article__content-text">
                     <span>IMDb</span>&nbsp;&nbsp;{vote_average}
@@ -96,6 +98,8 @@ export default function MovieDetailsPageView() {
                       </li>
                     ))}
                   </ul>
+                  {/* <h3 className="article__content-title">Budget</h3>
+                  <p className="article__content-text">{budget} $</p> */}
                   <h3 className="article__content-title">Duration</h3>
                   <p className="article__content-text">{runtime} munites</p>
                   <h3 className="article__content-title">Overview</h3>
@@ -116,6 +120,7 @@ export default function MovieDetailsPageView() {
                               vote_average,
                               runtime,
                               release_date,
+                              budget,
                             ),
                           );
                         }}
@@ -149,6 +154,7 @@ export default function MovieDetailsPageView() {
                               vote_average,
                               runtime,
                               release_date,
+                              budget,
                             ),
                           );
                         }}
@@ -182,6 +188,7 @@ export default function MovieDetailsPageView() {
                               vote_average,
                               runtime,
                               release_date,
+                              budget,
                             ),
                           );
                         }}
@@ -236,6 +243,7 @@ export default function MovieDetailsPageView() {
                 <h3 className="article__content-title">Overview</h3>
                 <p className="article__content-text"> {overview}</p>
               </div> */}
+              {/* </div> */}
 
               <div className="article-decorate-line article-decorate-line--up"></div>
 
@@ -288,19 +296,18 @@ export default function MovieDetailsPageView() {
               </div>
 
               {/* <div className="article-decorate-line article-decorate-line--down"></div> */}
-            </div>
-
-            <Switch>
-              <Route path={`${match.path}/cast`}>
-                <Cast /* movieId={movieId} */ />
-              </Route>
-              <Route path={`${match.path}/review`}>
-                <Review movieId={movieId} />
-              </Route>
-              {/* <Route path={`${match.path}/images`}>
+              <Switch>
+                <Route path={`${match.path}/cast`}>
+                  <Cast /* movieId={movieId} */ />
+                </Route>
+                <Route path={`${match.path}/review`}>
+                  <Review movieId={movieId} />
+                </Route>
+                {/* <Route path={`${match.path}/images`}>
                 <MovieImages movieId={movieId} />
               </Route> */}
-            </Switch>
+              </Switch>
+            </div>
           </div>
         )}
       </section>

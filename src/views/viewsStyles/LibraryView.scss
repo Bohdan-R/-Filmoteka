@@ -4,7 +4,15 @@
     display: flex;
     justify-content: center;
     width: 100%;
-    margin-bottom: 60px;
+    margin-bottom: 40px;
+
+    @include for-size(tablet) {
+        margin-bottom: 50px;
+    }
+
+    @include for-size(desktop) {
+        margin-bottom: 60px;
+    }
 }
 
 .nav-lib__list {
@@ -14,37 +22,41 @@
 
 .nav-lib__item {
     &:not(:last-child) {
-        margin-right: 35px;
+        margin-right: 15px;
+    }
+
+    @include for-size(tablet) {
+        &:not(:last-child) {
+            margin-right: 25px;
+        }
+    }
+
+    @include for-size(desktop) {
+        &:not(:last-child) {
+            margin-right: 35px;
+        }
     }
 }
 
 .nav-lib__link {
     position: relative;
-    padding: 10px 25px;
+    padding: 7px 15px;
 
     color: $accent-color;
     text-transform: uppercase;
-    font-size: 16px;
-    font-weight: 500;
-    letter-spacing: 1px;
+    font-size: 12px;
+
     transition: 250ms;
 
     &:hover {
         background-color: $accent-color;
         color: $secondary-text-color;
-        /* box-shadow: 0 0 2px #21ebff,
-        0 0 5px #00dcf0,
-        0 0 15px #21ebff,
-        0 0 60px #21ebff; */
-        /* filter: blur(50px); */
-        transition-delay: 250ms;
-        /* box-shadow: #21ebff 0px 2px 4px 0px,
-        #21ebff 0px 2px 16px 0px; */
 
         box-shadow: 0 0 2px $accent-color,
             0 0 5px $accent-color,
-            /* 0 0 15px #21ebff, */
             0 0 40px $accent-color;
+
+        transition-delay: 250ms;
     }
 
     &::before {
@@ -81,6 +93,21 @@
         height: 100%;
         border-bottom: 2px solid $accent-color;
         border-right: 2px solid $accent-color;
+    }
+
+    @include for-size(tablet) {
+        padding: 10px 20px;
+
+        font-size: 14px;
+        letter-spacing: 1px;
+    }
+
+    @include for-size(desktop) {
+        padding: 10px 25px;
+
+        font-size: 16px;
+        font-weight: 500;
+        letter-spacing: 1px;
     }
 }
 

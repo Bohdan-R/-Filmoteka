@@ -1,51 +1,102 @@
 @import '../../styles/base.scss';
 
 .review {
-    width: 1000px;
+    width: 250px;
     margin: 0 auto;
+
+    overflow: hidden;
+
+    @include for-size(tablet) {
+        width: 600px;
+    }
+
+    @include for-size(desktop) {
+        width: 840px;
+    }
 }
 
 .review__nothing {
-    text-align: center
+    font-size: 12px;
+    text-align: center;
+
+    @include for-size(tablet) {
+        font-size: 14px;
+    }
+
+    @include for-size(desktop) {
+        font-size: 16px;
+    }
 }
 
 .review__list {
     @extend %list;
     display: flex;
     flex-direction: column;
-
-    
 }
 
 .review__item {
-    /* background-color: #484848; */
     border-bottom: 2px solid #484848;
 
     &:not(:last-child) {
-        margin-bottom: 50px;
+        margin-bottom: 30px;
+    }
+
+    @include for-size(tablet) {
+        &:not(:last-child) {
+            margin-bottom: 40px;
+        }
+    }
+
+    @include for-size(desktop) {
+        &:not(:last-child) {
+            margin-bottom: 50px;
+        }
     }
 }
 
 .review__info-box {
     display: flex;
-    margin-bottom: 15px;
+    margin-bottom: 10px;
+
+    @include for-size(desktop) {
+        margin-bottom: 15px;
+    }
 }
 
 .review__info {
-    margin-right: 15px;
+    margin-right: 10px;
+    font-size: 14px;
 
     & > span {
         color: $accent-color;
     }
+
+    @include for-size(desktop) {
+        margin-right: 15px;
+        font-size: 16px;
+    }
 }
 
 .review__date {
-    margin-bottom: 10px;
-    font-size: 14px;
+    margin-bottom: 5px;
+    font-size: 12px;
     color: $icon-color;
+
+    @include for-size(desktop) {
+        margin-bottom: 10px;
+        font-size: 14px;
+    }
 }
 
 .review__content {
-    margin-bottom: 7px;
+    font-size: 14px;
+    margin-bottom: 4px;
     font-weight: 300;
+
+    /* text-align: justify; */
+
+    @include for-size(desktop) {
+        margin-bottom: 7px;
+        font-size: 16px;
+    }
 }

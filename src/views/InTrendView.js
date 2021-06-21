@@ -24,10 +24,10 @@ export default function MoviesView() {
 
   useEffect(() => {
     dispatch(moviesOperations.fetchPopularMovies(page));
-    /* window.scrollTo({
+    window.scrollTo({
       top: 0,
       behavior: 'smooth',
-    }); */
+    });
   }, [dispatch, page]);
 
   useEffect(() => {

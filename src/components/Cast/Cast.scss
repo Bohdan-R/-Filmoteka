@@ -1,31 +1,76 @@
 @import '../../styles/base.scss';
 
 .cast {
-  width: 730px;
-  /* padding-right: 15px;
-  padding-left: 15px; */
+  width: 290px;
   margin: 0 auto;
+
+  @include for-size(tablet) {
+    width: 600px;
+  }
+
+  @include for-size(desktop) {
+    width: 730px;
+  }
 }
 
 .cast__list {
   @extend %list;
   display: flex;
   flex-wrap: wrap;
-  margin: -25px -15px;
+  margin: -15px -10px;
+
+  @include for-size(tablet) {
+    margin: -20px -10px;
+  }
+
+  @include for-size(desktop) {
+    margin: -25px -15px;
+  }
 }
 
 .cast__item {
-  width: 160px;
-  margin: 25px 15px;
+  width: 115px;
+  margin: 15px 10px;
+
+  @include for-size(tablet) {
+    width: 135px;
+    margin: 20px 10px;
+  }
+
+  @include for-size(desktop) {
+    width: 160px;
+    margin: 25px 15px;
+  }
 }
 
-/* .cast__img-box {
+/* 1 ВАРИАНТ */
+.cast__img-box {
+  position: relative;
   width: 100%;
-  height: 240px;
+  height: 172px;
 
   border-top-left-radius: 4px;
   border-top-right-radius: 4px;
   overflow: hidden;
+
+  &::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+
+    background-color: rgba(0, 0, 0, 0.15);
+  }
+
+  @include for-size(tablet) {
+    height: 202.5px;
+  }
+
+  @include for-size(desktop) {
+    height: 240px;
+  }
 }
 
 .cast__content {
@@ -33,12 +78,21 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 15px;
+  padding: 10px;
 
   text-align: center;
-  font-size: 14px;
+  font-size: 12px;
 
   background-color: transparent;
+
+  @include for-size(tablet) {
+    font-size: 13px;
+  }
+
+  @include for-size(desktop) {
+    padding: 15px;
+    font-size: 14px;
+  }
 }
 
 .cast__content-decor {
@@ -52,15 +106,28 @@
 }
 
 .cast__content__title {
-  margin-top: 12px;
-  margin-bottom: 5px;
+  margin-top: 10px;
+  margin-bottom: 3px;
 
-  font-size: 12px;
+  font-size: 10px;
   color: $accent-color;
   text-transform: lowercase;
-} */
 
-.cast__card {
+  @include for-size(tablet) {
+    font-size: 11px;
+  }
+
+  @include for-size(desktop) {
+    margin-top: 12px;
+    margin-bottom: 5px;
+
+    font-size: 12px;
+  }
+}
+
+
+/* 2 ВАРИАНТ */
+/* .cast__card {
   position: relative;
 
   cursor: pointer;
@@ -84,7 +151,7 @@
     z-index: 1;
 
     border-radius: 5px;
-    /* background-color: rgba(0,0,0,0.15); */
+    
   }
 }
 
@@ -107,7 +174,7 @@
   border-bottom-left-radius: 5px;
   border-bottom-right-radius: 5px;
 
-  /* z-index: 1; */
+
   transition: 300ms;
 
   .cast__card:hover & {
@@ -131,4 +198,4 @@
   background-color: $accent-color;
   box-shadow: 0 1px 3px rgba(33, 235, 255, 0.8), 0 2px 6px rgba(33, 235, 255, 0.8),
     0 3px 10px rgba(33, 235, 255, 0.8);
-}
+} */

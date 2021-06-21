@@ -1,9 +1,10 @@
 @import '../../../styles/base.scss';
 
 header {
-  position: sticky;
+  position: fixed;
   top: 0;
   z-index: 999;
+  width: 100%;
   background-color: #000000;
   box-shadow: 0 2px 2px rgba(33, 235, 255, 0.85), 0 2px 5px rgba(33, 235, 255, 0.85),
     0 3px 25px rgba(33, 235, 255, 0.3), 0 6px 50px rgba(33, 235, 255, 0.3);
@@ -11,40 +12,81 @@ header {
 
 .nav-container {
   display: flex;
+  flex-direction: column;
   justify-content: space-between;
   align-items: center;
-  padding: 20px 0;
+  padding-top: 15px;
+  padding-bottom: 22px;
+
+  @include for-size(tablet) {
+    flex-direction: row;
+    padding-bottom: 15px;
+  }
+  
+  @include for-size(desktop) {
+    padding-top: 20px;
+    padding-bottom: 20px;
+  }
 }
 
-/* .logo-box {
-    display: flex;
-    align-items: baseline;
-} */
+.logo-box {
+  margin-bottom: 20px;
+
+  @include for-size(tablet) {
+    margin-bottom: 0;
+  }
+}
 
 .logo-icon {
   position: relative;
-  top: 5px;
-  width: 50px;
-  height: 50px;
+  top: 3px;
+  width: 30px;
+  height: 30px;
   margin-right: 10px;
-  font-size: 50px;
+  font-size: 30px;
 
-  /*  fill: rgba(33, 235, 255, .3); */
   background-color: rgba(49, 152, 161, 0.85);
-  box-shadow: 0 0 10px $accent-color, /* 0 0 25px #21ebff, */ 0 0 45px $accent-color;
+  box-shadow: 0 0 10px $accent-color, 0 0 45px $accent-color;
 
   &::after {
     content: '';
     position: absolute;
     top: 0;
     left: 0;
-    width: 50px;
-    height: 50px;
-    /* transform: translate(-50%, -50%); */
+    width: 30px;
+    height: 30px;
     background-color: $accent-color;
     z-index: -1;
     opacity: 0.3;
     filter: blur(15px);
+  }
+
+   @include for-size(tablet) {
+     top: 4px;
+     width: 40px;
+     height: 40px;
+     margin-right: 10px;
+     font-size: 40px;
+
+     &::after {
+       width: 40px;
+       height: 40px;
+       filter: blur(15px);
+     }
+   }
+
+  @include for-size(desktop) {
+    top: 5px;
+    width: 50px;
+    height: 50px;
+    margin-right: 10px;
+    font-size: 50px;
+
+    &::after {
+      width: 50px;
+      height: 50px;
+      filter: blur(15px);
+    }
   }
 }
 
@@ -54,8 +96,7 @@ header {
   font-family: 'Big Shoulders Stencil Display';
   font-weight: 500;
   color: $main-text-color;
-  font-size: 50px;
-  /* text-transform: uppercase; */
+  font-size: 30px;
   letter-spacing: 4px;
   text-shadow: 0 0 3px $accent-color;
 
@@ -84,32 +125,16 @@ header {
     filter: blur(20px);
   }
 
-  /* animation: animate 5s linear 1;
+  @include for-size(tablet) {
+    font-size: 40px;
+    letter-spacing: 4px;
+  }
 
-    @keyframes animate {
-        0%,18%,20%,50.1%,60%,65.1%,80%,90.1%,92%  {
-            color: #212121;
-            text-shadow: none;
-        }
-        18.1%,
-        20.1%,
-        30%,
-        50%,
-        60.1%,
-        65%,
-        80.1%,
-        90%,
-        92.1%,
-        100%
-        {
-            color: #fff;
-            text-shadow: 0 0 10px #21ebff,
-            0 0 20px #21ebff,
-            0 0 40px #21ebff,
-            0 0 80px #21ebff,
-            0 0 100px #21ebff;
-        }
-    } */
+  @include for-size(desktop) {
+    font-size: 50px;
+    letter-spacing: 4px;
+  }
+
 }
 
 .nav__list {
@@ -119,17 +144,29 @@ header {
 
 .nav__item {
   &:not(:last-child) {
-    margin-right: 25px;
+    margin-right: 15px;
+  }
+
+  @include for-size(tablet) {
+    &:not(:last-child) {
+      margin-right: 20px;
+    }
+  }
+
+  @include for-size(desktop) {
+    &:not(:last-child) {
+      margin-right: 25px;
+    }
   }
 }
 
 .nav__link {
   position: relative;
-  padding: 10px 15px;
+  padding: 7px 12px;
 
   color: $accent-color;
   text-transform: uppercase;
-  font-size: 18px;
+  font-size: 12px;
   font-weight: 500;
   letter-spacing: 1px;
   transition: 250ms;
@@ -137,17 +174,11 @@ header {
   &:hover {
     background-color: $accent-color;
     color: $secondary-text-color;
-    /* box-shadow: 0 0 2px #21ebff,
-        0 0 5px #00dcf0,
-        0 0 15px #21ebff,
-        0 0 60px #21ebff; */
-    /* filter: blur(50px); */
+    box-shadow: 0 0 2px $accent-color,
+    0 0 5px $accent-color,
+    0 0 20px $accent-color;
+    
     transition-delay: 250ms;
-    /* box-shadow: #21ebff 0px 2px 4px 0px,
-        #21ebff 0px 2px 16px 0px; */
-
-    box-shadow: 0 0 2px $accent-color, 0 0 5px $accent-color,
-      /* 0 0 15px #21ebff, */ 0 0 40px $accent-color;
   }
 
   &::before {
@@ -184,6 +215,36 @@ header {
     height: 100%;
     border-bottom: 2px solid $accent-color;
     border-right: 2px solid $accent-color;
+  }
+
+  @include for-size(tablet) {
+    padding: 8px 13px;
+    font-size: 14px;
+
+    &:hover {
+      background-color: $accent-color;
+      color: $secondary-text-color;
+      box-shadow: 0 0 2px $accent-color,
+        0 0 5px $accent-color,
+        0 0 30px $accent-color;
+
+      transition-delay: 250ms;
+    }
+  }
+
+  @include for-size(desktop) {
+    padding: 10px 15px;
+    font-size: 18px;
+
+    &:hover {
+      background-color: $accent-color;
+      color: $secondary-text-color;
+      box-shadow: 0 0 2px $accent-color,
+        0 0 5px $accent-color,
+        0 0 40px $accent-color;
+
+      transition-delay: 250ms;
+    }
   }
 }
 

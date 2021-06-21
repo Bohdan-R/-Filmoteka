@@ -1,7 +1,15 @@
 @import '../../styles/base.scss';
 
 .movies {
-  margin-bottom: 70px;
+  margin-bottom: 40px;
+
+  @include for-size(tablet) {
+    margin-bottom: 50px;
+  }
+
+  @include for-size(desktop) {
+    margin-bottom: 70px;
+  }
 }
 
 .movies__list {
@@ -10,13 +18,22 @@
   flex-wrap: wrap;
 
   margin: -15px;
-  /* outline: 1px solid black; */
 }
 
 .movies__link {
-  width: 280px;
-  height: 420px;
+  width: 130px;
+  height: 195px;
   margin: 15px;
+
+  @include for-size(tablet) {
+    width: 216px;
+    height: 324px;
+  }
+
+  @include for-size(desktop) {
+    width: 280px;
+    height: 420px;
+  }
 }
 
 .movies__card {
@@ -48,62 +65,113 @@
 
 .front {
   opacity: 1;
+
+  .movies__card:hover & {
+    transform: rotateY(180deg);
+    opacity: 0;
+  }
 }
 
 .back {
-  padding: 30px 20px;
+  padding: 10px 10px;
 
   background-color: #484848;
   transform: rotateY(180deg);
   opacity: 0;
-}
 
-.movies__card:hover .front {
-  transform: rotateY(180deg);
-  opacity: 0;
-}
+  .movies__card:hover & {
+    transform: rotateY(360deg);
+    opacity: 1;
 
-.movies__card:hover .back {
-  transform: rotateY(360deg);
-  opacity: 1;
-  /* box-shadow: 2px 2px 5px rgba(33, 235, 255, .7),
-    4px 4px 25px rgba(33, 235, 255, .55),
-    6px 6px 40px rgba(33, 235, 255, .4),
-    -2px -2px 5px rgba(33, 235, 255, .7),
-    -4px -4px 25px rgba(33, 235, 255, .55),
-    -6px -6px 40px rgba(33, 235, 255, .4); */
+    box-shadow: 0 0 3px 2px rgba(33, 235, 255, 0.8),
+    0 0 10px rgba(33, 235, 255, 0.9),
+    0 0 35px rgba(33, 235, 255, 0.6);
+  }
 
-  box-shadow: 0 0 4px 2px rgba(33, 235, 255, 0.8), 0 0 15px rgba(33, 235, 255, 0.9),
-    /* 0 0 30px rgba(33, 235, 255, .9), */ 0 0 50px rgba(33, 235, 255, 0.6);
+  @include for-size(tablet) {
+    padding: 25px 20px;
 
-  /* box-shadow: 0 0 2px 2px rgba(33, 235, 255, .85),
-    0 0 5px 2px rgba(33, 235, 255, .85),
-    0 0 25px 3px rgba(33, 235, 255, .3),
-    0 0 50px 6px rgba(33, 235, 255, .3); */
+    .movies__card:hover & {
+      box-shadow: 0 0 4px 2px rgba(33, 235, 255, 0.8),
+        0 0 15px rgba(33, 235, 255, 0.9),
+        0 0 40px rgba(33, 235, 255, 0.6);
+    }
+  }
+
+  @include for-size(desktop) {
+    padding: 30px 20px;
+
+    .movies__card:hover & {
+      box-shadow: 0 0 4px 2px rgba(33, 235, 255, 0.8),
+      0 0 15px rgba(33, 235, 255, 0.9),
+      0 0 50px rgba(33, 235, 255, 0.6);
+    }    
+  }
 }
 
 .movies__card__title {
-  margin-bottom: 60px;
+  margin-bottom: 10px;
   text-align: center;
-  font-size: 22px;
+  font-size: 12px;
   color: #21ebff;
+
+  @include for-size(tablet) {
+    margin-bottom: 30px;
+    font-size: 16px;
+  }
+
+  @include for-size(desktop) {
+    margin-bottom: 60px;
+    font-size: 22px;
+  }
 }
 
 .movies__card__info-title {
-  font-size: 14px;
+  font-size: 10px;
   font-weight: 300;
-  margin-bottom: 7px;
+  margin-bottom: 4px;
+
+  @include for-size(tablet) {
+    font-size: 12px;
+    margin-bottom: 6px;
+  }
+
+  @include for-size(desktop) {
+    font-size: 14px;
+    margin-bottom: 7px;
+  }
 }
 
 .movies__card__info-item {
-  margin-bottom: 25px;
+  margin-bottom: 10px;
+  font-size: 11px;
 
   & > span {
-    padding: 3px 5px;
+    padding: 2px 4px;
     border-radius: 4px;
     color: #000;
+    font-size: 11px;
     font-weight: 700;
     background-color: #fdd835;
+  }
+
+  @include for-size(tablet) {
+    margin-bottom: 20px;
+    font-size: 14px;
+
+    &>span {
+      font-size: 14px;
+    }
+  }
+
+  @include for-size(desktop) {
+    margin-bottom: 25px;
+    font-size: 16px;
+
+    &>span {
+      padding: 3px 5px;
+      font-size: 16px;
+    }
   }
 }
 
@@ -111,46 +179,105 @@
   @extend %list;
   display: flex;
   flex-wrap: wrap;
-  margin-bottom: 135px;
+  /* margin-bottom: 20px; */
+
+  /* @include for-size(tablet) {
+    margin-bottom: 100px;
+  }
+
+  @include for-size(desktop) {
+    margin-bottom: 135px;
+  } */
 }
 
 .movies__card__genres-item {
+  font-size: 11px;
+
   &:last-child span {
     display: none;
+  }
+
+  @include for-size(tablet) {
+    font-size: 14px;
+  }
+
+  @include for-size(desktop) {
+    font-size: 16px;
   }
 }
 
 .movies__card__date {
   position: absolute;
-  bottom: 30px;
-  left: 55px;
-  font-size: 14px;
+  width: 100%;
+  bottom: 10px;
+  left: 0;
+  font-size: 10px;
   font-weight: 300;
+  text-align: center;
 
   & > span {
-    font-size: 16px;
+    font-size: 11px;
     font-weight: 500;
     color: #21ebff;
+  }
+
+  @include for-size(tablet) {
+    bottom: 25px;
+    font-size: 12px;
+
+    &>span {
+      font-size: 14px;
+    }
+  }
+
+  @include for-size(desktop) {
+    bottom: 30px;
+    font-size: 14px;
+
+    &>span {
+      font-size: 16px;
+    }
   }
 }
 
 .movies__card__icon-list {
   @extend %list;
   position: absolute;
-  bottom: 65px;
-  left: 50%;
-
-  transform: translateX(-50%);
-
+  width: 100%;
+  bottom: 25px;
+  left: 0;
   display: flex;
+  justify-content: center;
+
+  @include for-size(tablet) {
+    position: absolute;
+    bottom: 55px;
+  }
+
+  @include for-size(desktop) {
+    position: absolute;
+    bottom: 65px;
+  }
 }
 
 .movies__card__icon-item {
-  font-size: 40px;
+  font-size: 25px;
   color: $icon-color;
 
   &:not(:last-child) {
-    margin-right: 15px;
+    margin-right: 10px;
+  }
+
+  @include for-size(tablet) {
+    font-size: 35px;
+
+    &:not(:last-child) {
+      margin-right: 15px;
+    }
+  }
+
+  @include for-size(desktop) {
+    font-size: 40px;
   }
 }
 

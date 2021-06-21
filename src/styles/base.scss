@@ -43,13 +43,38 @@ a {
 }
 
 .section {
-  padding-top: 80px;
-  padding-bottom: 80px;
+  padding-top: 170px;
+  padding-bottom: 60px;
+
+  @include for-size(tablet) {
+    padding-top: 148px;
+    padding-bottom: 70px;
+  }
+
+  @include for-size(desktop) {
+    padding-top: 180px;
+    padding-bottom: 80px;
+  }
 }
 
 .container {
-  width: 1280px;
-  padding-left: 35px;
-  padding-right: 35px;
   margin: 0 auto;
+  padding-right: 15px;
+  padding-left: 15px;
+
+  @include for-size(mobile) {
+    width: 320px;
+  }
+
+  @include for-size(tablet) {
+    width: 768px;
+    padding-left: 30px;
+    padding-right: 30px;
+  }
+
+  @include for-size(desktop) {
+    width: 1280px;
+    padding-left: 35px;
+    padding-right: 35px;
+  }
 }

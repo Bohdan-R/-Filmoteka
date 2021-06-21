@@ -76,7 +76,6 @@ export default function MoviesView() {
     <main>
       <section className="section">
         <div className="container">
-          {/* <div className="search-form-container"> */}
           <form className="search-form" onSubmit={handleSubmit}>
             <div className="search-form__input-wrap">
               <input
@@ -86,14 +85,13 @@ export default function MoviesView() {
                 value={search}
                 autoComplete="off"
                 onChange={handleSearchChange}
-                /* placeholder="Search movies" */
               />
               <button type="submit" className="search-form__button" onSubmit={handleSubmit}>
                 <BiSearchAlt2 className="search-form__icon" />
               </button>
             </div>
           </form>
-          {/* </div> */}
+
           {/* <SearchForm /> */}
           <MoviesList movies={movies} page={page} />
 
