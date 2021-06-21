@@ -5,7 +5,7 @@
   margin: 0 auto;
 
   @include for-size(tablet) {
-    width: 600px;
+    width: 660px;
   }
 
   @include for-size(desktop) {
@@ -33,7 +33,7 @@
   margin: 15px 10px;
 
   @include for-size(tablet) {
-    width: 135px;
+    width: 150px;
     margin: 20px 10px;
   }
 
@@ -65,7 +65,7 @@
   }
 
   @include for-size(tablet) {
-    height: 202.5px;
+    height: 225px;
   }
 
   @include for-size(desktop) {
@@ -86,7 +86,8 @@
   background-color: transparent;
 
   @include for-size(tablet) {
-    font-size: 13px;
+    padding: 12px;
+    font-size: 14px;
   }
 
   @include for-size(desktop) {
@@ -114,7 +115,7 @@
   text-transform: lowercase;
 
   @include for-size(tablet) {
-    font-size: 11px;
+    font-size: 12px;
   }
 
   @include for-size(desktop) {

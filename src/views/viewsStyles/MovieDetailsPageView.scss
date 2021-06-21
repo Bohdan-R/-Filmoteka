@@ -5,7 +5,7 @@
   margin: 0 auto;
 
   @include for-size(tablet) {
-    width: 600px;
+    width: 700px;
   }
 
   @include for-size(desktop) {
@@ -24,8 +24,8 @@
   border-radius: 5px;
 
   @include for-size(tablet) {
-    width: 120%;
-    transform: translateX(-60px);
+    width: 105%;
+    transform: translateX(-17.5px);
   }
 
   @include for-size(desktop) {
@@ -98,9 +98,9 @@
   overflow: hidden;
 
   @include for-size(tablet) {
-    width: 260px;
-    height: 390px;
-    margin-right: 70px;
+    width: 300px;
+    height: 450px;
+    margin-right: 80px;
   }
 
   @include for-size(desktop) {
@@ -116,7 +116,7 @@
 
   @include for-size(tablet) {
     padding-top: 10px;
-    width: 270px;
+    width: 320px;
   }
 
   @include for-size(desktop) {
@@ -146,6 +146,10 @@
   margin-bottom: 6px;
   font-size: 16px;
 
+  @include for-size(tablet) {
+    font-size: 17px;
+  }
+
   @include for-size(desktop) {
     margin-bottom: 10px;
     font-size: 19px;
@@ -164,13 +168,17 @@
     background-color: #fdd835;
   }
 
-  @include for-size(desktop) {
-    margin-bottom: 25px;
-    font-size: 16px;
+  @include for-size(tablet) {
+    font-size: 15px;
 
     &>span {
       padding: 3px 5px;
     }
+  }
+
+  @include for-size(desktop) {
+    margin-bottom: 25px;
+    font-size: 16px;
   }
 }
 
@@ -181,6 +189,10 @@
   margin-bottom: 20px;
 
   font-size: 14px;
+
+  @include for-size(tablet) {
+    font-size: 15px;
+  }
 
   @include for-size(desktop) {
     margin-bottom: 25px;
@@ -231,10 +243,10 @@
   }
 
   @include for-size(tablet) {
-    width: 55px;
-    height: 55px;
+    width: 60px;
+    height: 60px;
 
-    font-size: 55px;
+    font-size: 60px;
   }
 
   @include for-size(desktop) {
@@ -315,7 +327,6 @@
 
   @include for-size(desktop) {
     padding: 10px 15px;
-    font-size: 16px;
   }
 }
 
