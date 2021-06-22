@@ -9,14 +9,12 @@ const movies = createReducer([], {
 });
 
 const totalPopularMovies = createReducer(0, {
-  [moviesActions.fetchTotalPopularMoviesSuccess]: (_, { payload }) =>
-    /* Math.ceil(payload / 20) */ payload,
+  [moviesActions.fetchTotalPopularMoviesSuccess]: (_, { payload }) => payload,
   [moviesActions.clearTotalResultMovies]: () => 0,
 });
 
 const totalMovies = createReducer(0, {
-  [moviesActions.fetchTotalMoviesSuccess]: (_, { payload }) =>
-    /* Math.ceil(payload / 20) */ payload,
+  [moviesActions.fetchTotalMoviesSuccess]: (_, { payload }) => payload,
   [moviesActions.clearTotalResultMovies]: () => 0,
 });
 

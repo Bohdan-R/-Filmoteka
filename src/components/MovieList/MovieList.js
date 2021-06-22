@@ -111,7 +111,6 @@ export default function MoviesList({ movies, page = 1 }) {
                     release data
                     <span>&nbsp;{release_date ? release_date : 'coming soon'}</span>
                   </p>
-                  {/* <p className="movies__card__info-item"></p> */}
                 </div>
               </li>
             </Link>

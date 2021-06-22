@@ -23,7 +23,6 @@ export default function Cast() {
         {cast &&
           cast.map(actor => (
             <li key={actor.id} className="cast__item">
-              {/* 1 ВАРИАНТ */}
               <div className="cast__card">
                 <div className="cast__img-box">
                   <img
@@ -39,23 +38,6 @@ export default function Cast() {
                   <p className="cast__content__info">{actor.character}</p>
                 </div>
               </div>
-
-              {/* 2 ВАРИАНТ */}
-              {/* <div className="cast__card">
-                <div className="cast__img-box">
-                  <img
-                    alt=""
-                    src={`https://image.tmdb.org/t/p/w500/${actor.profile_path}`}
-                    className="cast__img"
-                  />
-                </div>
-                <div className="cast__content">
-                  <p className="cast__content__info">{actor.name}</p>
-                  <p className="cast__content__title">Character</p>
-                  <p className="cast__content__info">{actor.character}</p>
-                </div>
-              </div>
-              <div className="cast__card-decor"></div> */}
             </li>
           ))}
       </ul>

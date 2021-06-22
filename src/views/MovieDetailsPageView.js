@@ -1,4 +1,4 @@
-import React, { useEffect, useCallback } from 'react';
+import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import {
   Route,
@@ -14,12 +14,8 @@ import moviesSelectors from '../redux/movies/movies-selectors';
 import moviesActions from '../redux/movies/movies-actions';
 import Cast from '../components/Cast';
 import Review from '../components/Review';
-import MovieImages from '../components/MovieImages';
-import MoviesList from '../components/MovieList';
 import './viewsStyles/MovieDetailsPageView.scss';
-import className from 'classnames';
 import { MdFavorite, MdLocalMovies, MdLibraryAdd } from 'react-icons/md';
-import { RiArrowGoBackFill } from 'react-icons/ri';
 import { AiOutlineRollback } from 'react-icons/ai';
 
 export default function MovieDetailsPageView() {
@@ -38,8 +34,6 @@ export default function MovieDetailsPageView() {
   const favouriteMovies = useSelector(moviesSelectors.getFavouriteMovies);
   const queueMovies = useSelector(moviesSelectors.getQueueMovies);
   const watchedMovies = useSelector(moviesSelectors.getWatchedMovies);
-  const movie = useSelector(moviesSelectors.getMovieDetails);
-  console.log(movie);
 
   const history = useHistory();
   const params = useParams();
@@ -47,8 +41,6 @@ export default function MovieDetailsPageView() {
   const match = useRouteMatch();
 
   const movieId = params.movieId;
-
-  console.log(location);
 
   useEffect(() => {
     dispatch(moviesOperations.fetchMovieDetails(movieId));
@@ -71,9 +63,6 @@ export default function MovieDetailsPageView() {
               <button type="button" className="btn-go-back" onClick={handleGoBack}>
                 <AiOutlineRollback />
               </button>
-
-              {/* <div className="article-container"> */}
-              {/* <div className="article-decorate-line article-decorate-line--down"></div> */}
 
               <div className="article" id={id}>
                 <div className="article__img-wrap">
@@ -98,8 +87,6 @@ export default function MovieDetailsPageView() {
                       </li>
                     ))}
                   </ul>
-                  {/* <h3 className="article__content-title">Budget</h3>
-                  <p className="article__content-text">{budget} $</p> */}
                   <h3 className="article__content-title">Duration</h3>
                   <p className="article__content-text">{runtime} munites</p>
                   <h3 className="article__content-title">Overview</h3>
@@ -207,48 +194,12 @@ export default function MovieDetailsPageView() {
                       </button>
                     )}
                   </div>
-                  {/* <ul className="article__content-icon-list">
-                    <li
-                      className={className('article__content-icon-item', {
-                        'article__content-icon-item--active': favouriteMovies.find(
-                          movie => movie.id === id,
-                        ),
-                      })}
-                    >
-                      <MdFavorite />
-                    </li>
-                    <li
-                      className={className('article__content-icon-item', {
-                        'article__content-icon-item--active': queueMovies.find(
-                          movie => movie.id === id,
-                        ),
-                      })}
-                    >
-                      <MdLibraryAdd />
-                    </li>
-                    <li
-                      className={className('article__content-icon-item', {
-                        'article__content-icon-item--active': watchedMovies.find(
-                          movie => movie.id === id,
-                        ),
-                      })}
-                    >
-                      <MdLocalMovies />
-                    </li>
-                  </ul> */}
                 </div>
               </div>
-
-              {/* <div className="overview-box">
-                <h3 className="article__content-title">Overview</h3>
-                <p className="article__content-text"> {overview}</p>
-              </div> */}
-              {/* </div> */}
 
               <div className="article-decorate-line article-decorate-line--up"></div>
 
               <div className="additional-info">
-                {/* <p className="additional-info__title">Additional information</p> */}
                 <ul className="additional-info__list">
                   <li className="additional-info__item">
                     <NavLink
@@ -278,34 +229,16 @@ export default function MovieDetailsPageView() {
                       Review
                     </NavLink>
                   </li>
-                  {/* <li className="additional-info__item">
-                    <NavLink
-                      to={{
-                        pathname: `${match.url}/images`,
-                        state: {
-                          ...location.state,
-                        },
-                      }}
-                      className="additional-info__link"
-                      activeClassName="additional-info__link--active"
-                    >
-                      Movie Images
-                    </NavLink>
-                  </li> */}
                 </ul>
               </div>
 
-              {/* <div className="article-decorate-line article-decorate-line--down"></div> */}
               <Switch>
                 <Route path={`${match.path}/cast`}>
-                  <Cast /* movieId={movieId} */ />
+                  <Cast />
                 </Route>
                 <Route path={`${match.path}/review`}>
-                  <Review movieId={movieId} />
+                  <Review />
                 </Route>
-                {/* <Route path={`${match.path}/images`}>
-                <MovieImages movieId={movieId} />
-              </Route> */}
               </Switch>
             </div>
           </div>

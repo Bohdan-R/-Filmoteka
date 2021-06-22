@@ -1,22 +1,12 @@
-import React, { useState, useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { Switch, Route, NavLink, useLocation, useRouteMatch } from 'react-router-dom';
-import moviesOperations from '../redux/movies/movies-operations';
+import React from 'react';
+import { useSelector } from 'react-redux';
+import { NavLink, useRouteMatch } from 'react-router-dom';
 import moviesSelectors from '../redux/movies/movies-selectors';
-import moviesActions from '../redux/movies/movies-actions';
 import MoviesList from '../components/MovieList';
-import Navigation from '../components/AppBar/Navigation';
-import SearchForm from '../components/SearchForm';
-import Cast from '../components/Cast';
 
 export default function MoviesView() {
-  const dispatch = useDispatch();
-  const location = useLocation();
   const match = useRouteMatch();
   const favouriteMovies = useSelector(moviesSelectors.getFavouriteMovies);
-  console.log(favouriteMovies);
-
-  console.log(match);
 
   return (
     <main>
