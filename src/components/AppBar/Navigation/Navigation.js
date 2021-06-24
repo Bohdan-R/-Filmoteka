@@ -1,11 +1,13 @@
 import React from 'react';
-import { NavLink } from 'react-router-dom';
-import { MdLocalMovies } from 'react-icons/md';
-import TheatersIcon from '@material-ui/icons/Theaters';
+import { NavLink, useLocation } from 'react-router-dom';
+import className from 'classnames';
 import { ReactComponent as Logo } from '../../../Images/film.svg';
 import './Navigation.scss';
 
 export default function Navigation() {
+  const location = useLocation();
+
+  console.log(location);
   return (
     <div className="nav-container">
       <div className="logo-box">
@@ -32,7 +34,10 @@ export default function Navigation() {
             <NavLink
               exact
               to="/favourite"
-              className="nav__link"
+              className={className('nav__link', {
+                'nav__link--active':
+                  location.pathname === '/queue' || location.pathname === '/watched',
+              })}
               activeClassName="nav__link--active"
             >
               Library

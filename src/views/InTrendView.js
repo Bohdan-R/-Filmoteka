@@ -33,7 +33,6 @@ export default function MoviesView() {
   }, [dispatch]);
 
   const handlePageChange = pageNumber => {
-    console.log(`active page is ${pageNumber}`);
     setPage(pageNumber);
   };
 

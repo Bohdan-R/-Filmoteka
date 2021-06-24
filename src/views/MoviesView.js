@@ -1,15 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useLocation } from 'react-router-dom';
-import ReactPaginate from 'react-paginate';
 import Pagination from 'react-js-pagination';
-import _ from 'lodash';
 import moviesOperations from '../redux/movies/movies-operations';
 import moviesSelectors from '../redux/movies/movies-selectors';
 import moviesActions from '../redux/movies/movies-actions';
 import MoviesList from '../components/MovieList';
 import { BiSearchAlt2 } from 'react-icons/bi';
-import SearchForm from '../components/SearchForm';
 import './viewsStyles/MoviesView.scss';
 
 export default function MoviesView() {
@@ -20,13 +17,6 @@ export default function MoviesView() {
 
   const [page, setPage] = useState(location?.page || 1);
   const [search, setSearch] = useState(location?.search.slice(1) || '');
-
-  /* useEffect(() => {
-    if (!search) {
-      return;
-    }
-    dispatch(moviesOperations.fetchTotalMovies(search));
-  }, [dispatch]); */
 
   useEffect(() => {
     dispatch(moviesActions.clearMovies());
@@ -49,11 +39,6 @@ export default function MoviesView() {
     });
   }, [dispatch, page]);
 
-  const handlePageClick = event => {
-    const selectedPage = event.selected;
-    setPage(selectedPage + 1);
-  };
-
   const handleSearchChange = e => {
     setSearch(e.currentTarget.value);
   };
@@ -62,13 +47,11 @@ export default function MoviesView() {
     e.preventDefault();
 
     dispatch(moviesOperations.fetchMovies(search));
-
+    setPage(1);
     location.search = search;
-    /* setSearch(''); */
   };
 
   const handlePageChange = pageNumber => {
-    console.log(`active page is ${pageNumber}`);
     setPage(pageNumber);
   };
 
@@ -92,24 +75,7 @@ export default function MoviesView() {
             </div>
           </form>
 
-          {/* <SearchForm /> */}
           <MoviesList movies={movies} page={page} />
-
-          {/* <div className="pagination-container">
-            {movies.length > 0 && (
-              <ReactPaginate
-                previousLabel={'previous'}
-                nextLabel={'next'}
-                breakLabel={'...'}
-                breakClassName={'break-me'}
-                pageCount={totalPages}
-                onPageChange={handlePageClick}
-                containerClassName={'pagination'}
-                subContainerClassName={'pages pagination'}
-                activeClassName={'active'}
-              />
-            )}
-          </div> */}
 
           {movies.length > 0 && (
             <Pagination

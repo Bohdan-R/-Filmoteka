@@ -9,6 +9,8 @@ const getMovieGenres = state => state.filmoteka.movieGenres;
 const getFavouriteMovies = state => state.filmoteka.favouriteMovies;
 const getQueueMovies = state => state.filmoteka.queueMovies;
 const getWatchedMovies = state => state.filmoteka.watchedMovies;
+const getLoading = state => state.filmoteka.loading;
+const getLoadingCastReview = state => state.filmoteka.loadingCastReview;
 
 export default {
   getMovies,
@@ -22,4 +24,6 @@ export default {
   getFavouriteMovies,
   getQueueMovies,
   getWatchedMovies,
+  getLoading,
+  getLoadingCastReview,
 };

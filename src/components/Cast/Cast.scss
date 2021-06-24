@@ -43,7 +43,6 @@
   }
 }
 
-/* 1 ВАРИАНТ */
 .cast__img-box {
   position: relative;
   width: 100%;
@@ -61,7 +60,7 @@
     width: 100%;
     height: 100%;
 
-    background-color: rgba(0, 0, 0, 0.15);
+    background-color: rgba(0, 0, 0, 0.1);
   }
 
   @include for-size(tablet) {
@@ -71,6 +70,11 @@
   @include for-size(desktop) {
     height: 240px;
   }
+}
+
+.cast__img--error {
+  background-color: #484848;
+  object-fit: cover;
 }
 
 .cast__content {

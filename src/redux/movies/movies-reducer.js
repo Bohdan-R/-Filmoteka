@@ -59,6 +59,39 @@ const watchedMovies = createReducer([], {
     state.filter(({ id }) => id !== payload),
 });
 
+const loading = createReducer(false, {
+  [moviesActions.fetchPopularMoviesRequest]: () => true,
+  [moviesActions.fetchPopularMoviesSuccess]: () => false,
+  [moviesActions.fetchPopularMoviesError]: () => false,
+  [moviesActions.fetchTotalPopularMoviesRequest]: () => true,
+  [moviesActions.fetchTotalPopularMoviesSuccess]: () => false,
+  [moviesActions.fetchTotalPopularMoviesError]: () => false,
+  [moviesActions.fetchMoviesRequest]: () => true,
+  [moviesActions.fetchMoviesSuccess]: () => false,
+  [moviesActions.fetchMoviesError]: () => false,
+  [moviesActions.fetchTotalMoviesRequest]: () => true,
+  [moviesActions.fetchTotalMoviesSuccess]: () => false,
+  [moviesActions.fetchTotalMoviesError]: () => false,
+  [moviesActions.fetchMovieDetailsRequest]: () => true,
+  [moviesActions.fetchMovieDetailsSuccess]: () => false,
+  [moviesActions.fetchMovieDetailsError]: () => false,
+  [moviesActions.fetchMovieImagesRequest]: () => true,
+  [moviesActions.fetchMovieImagesSuccess]: () => false,
+  [moviesActions.fetchMovieImagesError]: () => false,
+  [moviesActions.fetchMovieGenresRequest]: () => true,
+  [moviesActions.fetchMovieGenresSuccess]: () => false,
+  [moviesActions.fetchMovieGenresError]: () => false,
+});
+
+const loadingCastReview = createReducer(false, {
+  [moviesActions.fetchMovieCastRequest]: () => true,
+  [moviesActions.fetchMovieCastSuccess]: () => false,
+  [moviesActions.fetchMovieCastError]: () => false,
+  [moviesActions.fetchMovieReviewRequest]: () => true,
+  [moviesActions.fetchMovieReviewSuccess]: () => false,
+  [moviesActions.fetchMovieReviewError]: () => false,
+});
+
 export default combineReducers({
   movies,
   totalPopularMovies,
@@ -71,4 +104,6 @@ export default combineReducers({
   favouriteMovies,
   queueMovies,
   watchedMovies,
+  loading,
+  loadingCastReview,
 });

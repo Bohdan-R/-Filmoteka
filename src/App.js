@@ -8,7 +8,6 @@ import FavouriteMoviesView from './views/FavouriteMoviesView';
 import QueueMoviesView from './views/QueueMoviesView';
 import WatchedMoviesView from './views/WatchedMoviesView';
 import MovieDetailsPageView from './views/MovieDetailsPageView';
-import SearchForm from './components/SearchForm';
 
 export default function App() {
   return (
